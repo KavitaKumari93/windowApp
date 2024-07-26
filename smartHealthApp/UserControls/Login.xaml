@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="smartHealthApp.UserControls.Login"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:smartHealthApp"
+             xmlns:custom="clr-namespace:smartHealthApp.CustomControl"
+             xmlns:focus="clr-namespace:smartHealthApp.CustomControl.BaseClasses"
+             xmlns:converter="clr-namespace:smartHealthApp.Converters">
+
+
+    <UserControl.Resources>
+        <converter:VisibilityConverter x:Key="BooleanVisibility"/>
+        <converter:InverseBooleanConverter x:Key="InverseBoolVisibility"/>
+        <converter:InverseBooleanToVisibilityConverter x:Key="InverseBooleanVisibility"/>
+        <!-- Images -->
+        <BitmapImage x:Key="MedicalImage" UriSource="pack://application:,,,/Images/medical.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <BitmapImage x:Key="smartHealthImage" UriSource="pack://application:,,,/Images/smarthealth.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="#0086a7"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Background" Value="#00BCE4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+  
+        <Grid>
+            <!-- Background Image -->
+            <Grid.Background>
+                <ImageBrush ImageSource="{StaticResource MedicalImage}" />
+            </Grid.Background>
+
+            <!--Login Block-->
+
+            <Grid x:Name="LoginForm" Visibility="{Binding IsBusinessNameVerfied ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanVisibility}}">
+                <!--Login Form-->
+                <Border Background="White" Width="380" Height="360" HorizontalAlignment="Right" Margin="0,0,55,0" VerticalAlignment="Center" >
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="10" Color="Black"   BlurRadius="10"  Direction="0" />
+                    </Border.Effect>
+                    <StackPanel Margin="20">
+                        <Image Source="{StaticResource smartHealthImage}" Width="170" Height="50"/>
+
+                        <Grid Height="50">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton   Content="AGENCY"  x:Name="AgencyButton" Grid.Column="0" Style="{StaticResource RadioButtonStyle}" IsChecked="{Binding IsAgencyPortalSelected,UpdateSourceTrigger=PropertyChanged}"
+                            Command="{Binding AgencyPortalSelectionCommand}"  />
+                            <RadioButton   Content="Patient" x:Name="PatientButton" Grid.Column="1" Style="{StaticResource RadioButtonStyle}" Command="{Binding PatientPortalSelectionCommand}"/>
+                        </Grid>
+                        <!--Agency-->
+                        <Grid  x:Name="AgencyLoginDetails"   Margin="0,25"  Visibility="{Binding IsAgencyPortalSelected, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanVisibility}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="15"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition />
+                                <RowDefinition Height="35"/>
+                                <RowDefinition />
+
+                            </Grid.RowDefinitions>
+                            <custom:TextBoxWithLabel  Style="{StaticResource TextBoxWithLabel}" Width="300" MaxLength="50" TextBoxInfo="User Name"  focus:FocusBehaviour.IsFocused="True"
+                                                  Text="{Binding AgencyLoginDetailsObj.UserName, UpdateSourceTrigger=PropertyChanged}" />
+
+                            <custom:TextBoxWithLabel  Grid.Row="2"  Style="{StaticResource TextBoxWithLabel}" Width="300" MaxLength="50"  TextBoxInfo="Password" IsPasswordEnabled="True" 
+                                                    Text="{Binding AgencyLoginDetailsObj.Password, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <TextBlock  Grid.Row="4" Text="Forgot Password?" Foreground="Blue" Margin="0,10,0,0" HorizontalAlignment="Right"/>
+
+                            <Button  Grid.Row="5" Content="LOG IN"  Style="{DynamicResource RoundedButtonStyle}"  Width="100" Command='{Binding AgencyLoginCommand}' />
+                        </Grid>
+
+                        <!--Agency/Patient Tabs-->
+                        <Grid Margin="0,25"  x:Name="UserLoginDetails"  Visibility="{Binding IsAgencyPortalSelected, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBoolVisibility}}" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="15"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition />
+
+                            </Grid.RowDefinitions>
+                            <custom:TextBoxWithLabel Style="{StaticResource TextBoxWithLabel}" Width="300" MaxLength="50" TextBoxInfo="User Name" Text="Patient" focus:FocusBehaviour.IsFocused="True" />
+
+                            <custom:TextBoxWithLabel  Grid.Row="2"  Style="{StaticResource TextBoxWithLabel}" Width="300" MaxLength="50"  TextBoxInfo="Password" IsPasswordEnabled="True" 
+                    Text=""/>
+
+                            <TextBlock  Grid.Row="4" Text="Forgot Password?" Foreground="Blue" Margin="0,10,0,0" HorizontalAlignment="Right"/>
+
+                            <Button  Grid.Row="5" Content="LOG IN" Style="{DynamicResource RoundedButtonStyle}" Width="100"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!--Verify Business Name Block-->
+            <Grid  Visibility="{Binding IsBusinessNameVerfied,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBooleanVisibility}}">
+                <Border Background="White" Width="380" Height="300" HorizontalAlignment="Right" Margin="0,0,55,0" VerticalAlignment="Center" >
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="10" Color="Black"  BlurRadius="10" />
+                    </Border.Effect>
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height=".5*"/>
+                            <RowDefinition/>
+                            <RowDefinition Height=".5*"/>
+                            <RowDefinition/>
+                            <RowDefinition Height=".5*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="{StaticResource smartHealthImage}" Width="170" Height="50" />
+
+                        <custom:TextBoxWithLabel Grid.Row="2" focus:FocusBehaviour.IsFocused="True"  Style="{StaticResource TextBoxWithLabel}" Width="300" MaxLength="50" TextBoxInfo="Business Name" Text="{Binding VerifyBussinessName,UpdateSourceTrigger=PropertyChanged}" />
+                        <Button  Grid.Row="4" Content="Verify" Style="{DynamicResource RoundedButtonStyle}" Width="100" Height="35" Command="{Binding VerifyBusinessCommand,UpdateSourceTrigger=PropertyChanged}" />
+
+
+                    </Grid>
+                </Border>
+
+            </Grid>
+
+     
+
+    </Grid>
+    
+</UserControl>

@@ -1,0 +1,165 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:custom="clr-namespace:smartHealthApp.CustomControl" >
+
+
+    <SolidColorBrush x:Key="LabelColor" Color="Gray"/>
+    <SolidColorBrush x:Key="DisabledBackground" Color="#AACCCCCC"/>
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="Gray"/>
+    <SolidColorBrush x:Key="TextBoxBackground" Color="#f5f7fa"/>
+    <SolidColorBrush x:Key="TextBoxStrokeBrush" Color="#FF757585"/>
+    <SolidColorBrush x:Key="CalenderSVGColor" Color="#000000" />
+    <SolidColorBrush x:Key="ButtonTextBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ButtonPressedColor" Color=" #2267b6" />
+    <SolidColorBrush x:Key="ControlBackground" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="ControlStrokeBrush" Color="#FF757585" />
+    <SolidColorBrush x:Key="ButtonForegroundColor" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="LoaderColor" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TextBoxFocusStrokeBrush" Color="#2f79df"/>
+    <SolidColorBrush x:Key="TextBoxDisableBackground" Color="#9f9da0"/>
+    <SolidColorBrush x:Key="TextBoxForeground" Color="#000000"/>
+    <SolidColorBrush x:Key="DataGridHeaderColor" Color="#6c6c7a" />
+
+
+    <!--  Textbox with Label Style  -->
+    <Storyboard
+        x:Key="enterGotFocus"
+        TargetProperty="FontSize"
+        TargetName="Message">
+        <DoubleAnimation To="8" Duration="0:0:0.3" />
+    </Storyboard>
+    <Storyboard
+        x:Key="exitGotFocus"
+        TargetProperty="FontSize"
+        TargetName="Message">
+        <DoubleAnimation Duration="0:0:0.4" />
+    </Storyboard>
+    <Storyboard
+        x:Key="enterHasText"
+        TargetProperty="FontSize"
+        TargetName="Message">
+        <DoubleAnimation To="8" Duration="0:0:0.3" />
+    </Storyboard>
+    <Storyboard
+        x:Key="exitHasText"
+        TargetProperty="FontSize"
+        TargetName="Message">
+        <DoubleAnimation Duration="0:0:0.4" />
+    </Storyboard>
+
+
+
+    
+
+    <Style x:Key="TextBoxGenericStyle" TargetType="{x:Type Control}">
+        <Style.Setters>
+            <Setter Property="Control.FontFamily" Value="/Font/Montserrat-Regular.otf#Montserrat" />
+            <Setter Property="Control.Height" Value="44" />
+            <Setter Property="Control.Width" Value="{Binding Path=ActualWidth,RelativeSource={RelativeSource AncestorType=Control}}"/>
+            <Setter Property="Control.BorderThickness" Value="2" />
+            <Setter Property="Control.BorderBrush" Value="{DynamicResource TextBoxStrokeBrush}" />
+            <Setter Property="Control.FontSize" Value="15" />
+            <Setter Property="Control.HorizontalAlignment" Value="Center" />
+            <Setter Property="Control.VerticalAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="TextBox.Padding" Value="4,2,4,0" />
+            <Setter Property="Control.Foreground" Value="{DynamicResource TextBoxForeground}" />
+            <Setter Property="Control.Background" Value="{DynamicResource TextBoxBackground}" />
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="TextBox.IsEnabled" Value="false">
+                <Setter Property="TextBox.Background" Value="{DynamicResource TextBoxDisableBackground}" />
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource TextBoxDisableForeground}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+
+    <Style  x:Key="TextBoxWithLabel"   BasedOn="{StaticResource TextBoxGenericStyle}"
+        TargetType="{x:Type custom:TextBoxWithLabel}">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type custom:TextBoxWithLabel}">
+                    <Border
+                        Name="Bd"
+                        Background="{TemplateBinding Background}"
+                        BorderThickness="0,0,0,2"
+                        >
+                        <Grid>
+                            <PasswordBox
+                                Name="pwdBox"
+                                Margin="8,8,3,3"
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                MaxLength="50"
+                                Visibility="Collapsed" />
+
+                            <!--<Decorator x:Name="PART_ContentHost" VerticalAlignment="Center" Margin="3"/>-->
+                            <ScrollViewer
+                                Name="PART_ContentHost"
+                                Margin="8,8,3,3"
+                                VerticalAlignment="Stretch"
+                                FontFamily="/Font/Montserrat-Regular.otf#Montserrat"
+                                FontSize="15"
+                                SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                            <TextBlock
+                                x:Name="Message"
+                                Margin="10,0,6,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontFamily="/Font/Montserrat-ExtraBold.otf/#Montserrat Extra Bold"
+                                FontSize="15"
+                                Foreground="DarkSlateGray"
+                                IsHitTestVisible="False"
+                                Text="{TemplateBinding TextBoxInfo}" />
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Bd" Property="Border.BorderBrush" Value="#2f79df" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="Bd" Property="Panel.Background" Value="#9f9da0" />
+                        </Trigger>
+
+                        <Trigger Property="HasText" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource enterHasText}" />
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource exitHasText}" />
+                            </Trigger.ExitActions>
+                            <Trigger.Setters>
+                                <Setter TargetName="Message" Property="VerticalAlignment" Value="Top" />
+                                <Setter TargetName="Message" Property="Foreground" Value="#2971d4" />
+                                <Setter TargetName="Message" Property="FontWeight" Value="Bold" />
+                                <Setter TargetName="Message" Property="Margin" Value="10,3,6,0" />
+                            </Trigger.Setters>
+                        </Trigger>
+                        <Trigger Property="IsPasswordEnabled" Value="True">
+                            <Setter TargetName="PART_ContentHost" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="pwdBox" Property="Visibility" Value="Visible" />
+                        </Trigger>
+
+                        <Trigger Property="Width" Value="Auto">
+                            <Setter Property="MinWidth" Value="100" />
+                        </Trigger>
+
+                        <Trigger Property="Height" Value="Auto">
+                            <Setter Property="MinHeight" Value="20" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
+</ResourceDictionary>

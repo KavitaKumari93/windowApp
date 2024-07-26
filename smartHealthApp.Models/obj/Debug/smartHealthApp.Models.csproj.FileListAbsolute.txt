@@ -1,0 +1,12 @@
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\bin\Debug\smartHealthApp.Models.dll
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\bin\Debug\smartHealthApp.Models.pdb
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\bin\Debug\smartHealthApp.Common.dll
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\bin\Debug\smartHealthApp.Common.pdb
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\obj\Debug\smartHealthApp.Models.csproj.AssemblyReference.cache
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\obj\Debug\smartHealthApp.Models.csproj.CoreCompileInputs.cache
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\obj\Debug\smartHea.42764A8E.Up2Date
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\obj\Debug\smartHealthApp.Models.dll
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.Models\obj\Debug\smartHealthApp.Models.pdb

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartHealthApp", "smartHealthApp\smartHealthApp.csproj", "{C21D8CD5-415A-42D1-8CE0-59C73C4F1A82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartHealthApp.Common", "smartHealthApp.Common\smartHealthApp.Common.csproj", "{03B98267-6210-4B0C-B7F6-5AB5EC9961A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartHealthApp.ViewModel", "smartHealthApp.ViewModel\smartHealthApp.ViewModel.csproj", "{697AAEED-79FE-45E1-ACBE-7E61013268A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartHealthApp.DataAccess", "smartHealthApp.DataAccess\smartHealthApp.DataAccess.csproj", "{8EFACBE0-BC92-4AE5-B265-8A143EBA7220}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartHealthApp.Models", "smartHealthApp.Models\smartHealthApp.Models.csproj", "{62D8255E-854D-409E-AB86-C869455409DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartHealthApp.Business", "smartHealthApp.Business\smartHealthApp.Business.csproj", "{33FC9D13-26C4-4A57-A1B5-F0A50D586E71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C21D8CD5-415A-42D1-8CE0-59C73C4F1A82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C21D8CD5-415A-42D1-8CE0-59C73C4F1A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C21D8CD5-415A-42D1-8CE0-59C73C4F1A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C21D8CD5-415A-42D1-8CE0-59C73C4F1A82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03B98267-6210-4B0C-B7F6-5AB5EC9961A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03B98267-6210-4B0C-B7F6-5AB5EC9961A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03B98267-6210-4B0C-B7F6-5AB5EC9961A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03B98267-6210-4B0C-B7F6-5AB5EC9961A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{697AAEED-79FE-45E1-ACBE-7E61013268A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{697AAEED-79FE-45E1-ACBE-7E61013268A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{697AAEED-79FE-45E1-ACBE-7E61013268A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{697AAEED-79FE-45E1-ACBE-7E61013268A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EFACBE0-BC92-4AE5-B265-8A143EBA7220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EFACBE0-BC92-4AE5-B265-8A143EBA7220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EFACBE0-BC92-4AE5-B265-8A143EBA7220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EFACBE0-BC92-4AE5-B265-8A143EBA7220}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62D8255E-854D-409E-AB86-C869455409DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62D8255E-854D-409E-AB86-C869455409DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62D8255E-854D-409E-AB86-C869455409DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62D8255E-854D-409E-AB86-C869455409DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33FC9D13-26C4-4A57-A1B5-F0A50D586E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33FC9D13-26C4-4A57-A1B5-F0A50D586E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33FC9D13-26C4-4A57-A1B5-F0A50D586E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33FC9D13-26C4-4A57-A1B5-F0A50D586E71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6527F20E-0098-4B03-8044-683F078C1AB8}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,314 @@
+﻿<UserControl x:Class="smartHealthApp.UserControls.AddEditUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:smartHealthApp.UserControls"
+             xmlns:custom="clr-namespace:smartHealthApp.CustomControl"
+             xmlns:focus="clr-namespace:smartHealthApp.CustomControl.BaseClasses"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <Style TargetType="TabControl">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <Grid KeyboardNavigation.TabNavigation="Local">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TabPanel x:Name="HeaderPanel" Panel.ZIndex="1" IsItemsHost="True" Background="White" />
+                            <Border x:Name="Border" Grid.Row="1" Background="White" BorderBrush="LightGray" BorderThickness="1">
+                                <ContentPresenter x:Name="PART_SelectedContentHost" Margin="5" ContentSource="SelectedContent"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Define the style for the TabItem -->
+        <Style TargetType="TabItem">
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border Name="Border" Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" 
+                                CornerRadius="2" Margin="2">
+                            <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                              ContentSource="Header" Margin="10,2" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="LightGreen" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="Green" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="LightGray" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="Gray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+
+    
+        
+        <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Visible">
+        <Grid>
+            <TabControl x:Name="tabctrl" >
+                <TabItem Header="User Info">
+
+                    <Grid Margin="15,10"  >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!--First Nname , Last Name , Middle Name-->
+                        <Grid Margin="0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <custom:TextBoxWithLabel Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="First Name" Text="{Binding StaffModelObj.FirstName,UpdateSourceTrigger=PropertyChanged}" />
+
+                            <custom:TextBoxWithLabel  Grid.Column="1"  Margin="0,0,5,0" HorizontalAlignment="Left" Style="{StaticResource TextBoxWithLabel}" MaxLength="50" TextBoxInfo="Middle Name" Text="{Binding StaffModelObj.MiddleName,UpdateSourceTrigger=PropertyChanged}" />
+
+                            <custom:TextBoxWithLabel Grid.Column="2" Style="{StaticResource TextBoxWithLabel}"  HorizontalAlignment="Left"  MaxLength="50" TextBoxInfo="Last Name" Text="{Binding StaffModelObj.LastName,UpdateSourceTrigger=PropertyChanged}"/>
+
+                        </Grid>
+                        <!--Address Block-->
+                        <Grid Grid.Row="1" >
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Row-1 Address***/APT/Unit-->
+
+                            <custom:TextBoxWithLabel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Address*" Text="{Binding StaffModelObj.Address,UpdateSourceTrigger=PropertyChanged}"  />
+
+                            <custom:TextBoxWithLabel Grid.Column="2" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Apt/Unit*" Text="{Binding StaffModelObj.ApartmentNumber,UpdateSourceTrigger=PropertyChanged}" />
+
+
+                            <!--Row-2 Country, City , State-->
+
+                            <!--IsEnabled="False" // To be continued with stateId , Country Id-->
+
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Country" IsEnabled="False"  Text="{Binding StaffModelObj.Country,UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="City" Text="{Binding StaffModelObj.City,UpdateSourceTrigger=PropertyChanged}" />
+
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="3"  Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="State" IsEnabled="False" Text="{Binding StaffModelObj.State,UpdateSourceTrigger=PropertyChanged}"/>
+
+
+                            <!--Row-3 Zip, Phone, NPI-->
+
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Zip*"  Text="{Binding StaffModelObj.Zip,UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Phone Number" Text="{Binding StaffModelObj.PhoneNumber,UpdateSourceTrigger=PropertyChanged}" />
+
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="3"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="NPI#"  Text="{Binding StaffModelObj.NPINumber,UpdateSourceTrigger=PropertyChanged}"/>
+
+
+                            <!--Row-4 Tax ID, Date of Birth, Date of Hire-->
+
+                            <custom:TextBoxWithLabel Grid.Row="6" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Tax ID*"  Text="{Binding StaffModelObj.TaxId,UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <custom:TextBoxWithLabel Grid.Row="6" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Date of Birth*" Text="{Binding StaffModelObj.DOB,UpdateSourceTrigger=PropertyChanged}" />
+
+                            <custom:TextBoxWithLabel Grid.Row="6" Grid.Column="3"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Date of Hire *"  Text="{Binding StaffModelObj.DOJ,UpdateSourceTrigger=PropertyChanged}"/>
+
+
+
+                            <!--Row-5 Role, Email , Gender-->
+                            <!--<ComboBox Name="comboRoles"  Grid.Row="8" Grid.Column="0"  Margin="0,0,5,0"></ComboBox>-->
+                            <custom:TextBoxWithLabel Grid.Row="8" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Role*"  Text="{Binding StaffModelObj.RoleId,UpdateSourceTrigger=PropertyChanged}"  IsEnabled="False"/>
+
+                            <custom:TextBoxWithLabel Grid.Row="8" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Email*" Text="{Binding StaffModelObj.Email,UpdateSourceTrigger=PropertyChanged}" />
+
+                            <!--<ComboBox Name="comboGender"  Grid.Row="8" Grid.Column="3"  Margin="0,0,5,0"></ComboBox>-->
+                            <custom:TextBoxWithLabel Grid.Row="8" Grid.Column="3"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Gender"  Text="{Binding StaffModelObj.GenderId,UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+
+
+                            <!--Row-6 CAQH ID ,Language, Degree-->
+
+                            <custom:TextBoxWithLabel Grid.Row="10" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="CAQH ID "  Text="{Binding StaffModelObj.CAQHID,UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <custom:TextBoxWithLabel Grid.Row="10" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Language" Text="{Binding StaffModelObj.Language,UpdateSourceTrigger=PropertyChanged}" />
+
+                            <!--<ComboBox Name="comboDegree"  Grid.Row="10" Grid.Column="3"  Margin="0,0,5,0" IsEnabled="False"></ComboBox>-->
+                            <custom:TextBoxWithLabel Grid.Row="10" Grid.Column="3"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Degree"  Text="{Binding StaffModelObj.Degree,UpdateSourceTrigger=PropertyChanged}"   IsEnabled="False"/>
+
+
+                            <!--Row-7 Practitioner id, Pay Rate, Payroll Group-->
+
+                            <custom:TextBoxWithLabel Grid.Row="12" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="BHPN Practitioner ID"  Text="{Binding StaffModelObj.EmployeeTypeID,UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <custom:TextBoxWithLabel Grid.Row="12" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Pay Rate*" Text="{Binding StaffModelObj.PayRate,UpdateSourceTrigger=PropertyChanged}"  />
+
+                            <custom:TextBoxWithLabel Grid.Row="12" Grid.Column="3"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Payroll Group*"  Text="{Binding StaffModelObj.NPI,UpdateSourceTrigger=PropertyChanged}"    IsEnabled="False"/>
+
+
+
+                            <!--Row-8 UserName, Password, Conmfirm Password-->
+
+                            <custom:TextBoxWithLabel Grid.Row="14" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="User Name*"  Text="{Binding  StaffModelObj.UserObj.UserName,UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <custom:TextBoxWithLabel Grid.Row="14" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Password*" Text="{Binding  StaffModelObj.UserObj.Password,UpdateSourceTrigger=PropertyChanged}" />
+
+                            <custom:TextBoxWithLabel Grid.Row="14" Grid.Column="3"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Confirm Password*"  Text="{Binding StaffModelObj.ConfirmPassword,UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+
+                        </Grid>
+                        <!--Location-->
+                        <Grid Grid.Row="2" Margin="0,10,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="LOCATION"  FontSize="16" Margin="0, 20"   FontWeight="SemiBold"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--Row-2 Location, Default Location ,Rendering Provider-->
+                                <custom:TextBoxWithLabel  Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Location"  Text="{Binding StaffModelObj.Country,UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+
+                                <custom:TextBoxWithLabel  Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Default Location" Text="{Binding StaffModelObj.City,UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" />
+
+                                <CheckBox  Grid.Column="2" Content="Is Active" IsChecked="True" />
+                            </Grid>
+                        </Grid>
+
+                        <!--Team-->
+                        <Grid Grid.Row="3"  Margin="0,10,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="TEAM"  FontSize="16" Margin="0, 20"   FontWeight="SemiBold"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="teamComboBox" Width="500" SelectedIndex="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" >
+                                    <ComboBoxItem Content="Option 1"/>
+                                    <ComboBoxItem Content="Option 2"/>
+                                    <ComboBoxItem Content="Option 3"/>
+                                    <ComboBoxItem Content="Option 4"/>
+                                </ComboBox>
+
+                            </Grid>
+                        </Grid>
+
+                        <!--Tag-->
+                        <Grid Grid.Row="4"  Margin="0,10,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="TAG"  FontSize="16" Margin="0, 20"   FontWeight="SemiBold"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="tagComboBox" Width="500" SelectedIndex="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" >
+                                    <ComboBoxItem Content="Option 1"/>
+                                    <ComboBoxItem Content="Option 2"/>
+                                    <ComboBoxItem Content="Option 3"/>
+                                    <ComboBoxItem Content="Option 4"/>
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                        <!--User Image-->
+                        <Grid Grid.Row="5"  Margin="0,10,0,0">
+                            <StackPanel >
+                                <TextBlock Text="USER PROFILE PHOTO"  FontSize="16" FontWeight="SemiBold" Margin="0,0,0,10" />
+                                <StackPanel HorizontalAlignment="Left">
+                                    <Ellipse Width="100" Height="100" Stroke="#E0E0E0" StrokeThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <Ellipse.Fill>
+                                            <VisualBrush Stretch="Uniform">
+                                                <VisualBrush.Visual>
+                                                    <Grid>
+                                                        <Image Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                    </Grid>
+                                                </VisualBrush.Visual>
+                                            </VisualBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <TextBlock Text="Logo Size (186 x 35) (jpg, jpeg, bmp, png)" TextAlignment="Center" Margin="0,10,0,0" Foreground="#808080"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel Grid.Row="6"  Orientation="Horizontal" HorizontalAlignment="Right"> 
+                            <Button  Content="SAVE" Style="{DynamicResource RoundedButtonStyle}" Width="90" Height="30" Margin="20,0" Command="{Binding SaveUserCommand}"/>
+                            <Button  Content="SAVE AND CONTINUE" Style="{DynamicResource RoundedButtonStyle}" Width="200" Height="30" Command="{Binding SaveContinueCommand}"/>
+
+                        </StackPanel>
+                    </Grid>
+
+                </TabItem>
+
+                <TabItem Header="Custom Fields">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- Add content here that may exceed the available space -->
+                        <TextBlock  Grid.Row="0" Text="Custom Fields Content" FontSize="100" Width="4000" Height="4000"/>
+                        <TextBlock Grid.Row="1" Text="Custom Fields Content" FontSize="100" Width="4000" Height="4000"/>
+                        <TextBlock Grid.Row="2" Text="Custom Fields Content" FontSize="100" Width="4000" Height="4000"/>
+                        <TextBlock Grid.Row="3" Text="Custom Fields Content" FontSize="100" Width="4000" Height="4000"/>
+                    </Grid>
+
+                </TabItem>
+            </TabControl>
+
+    </Grid>
+    </ScrollViewer>
+
+</UserControl>

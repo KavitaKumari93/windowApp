@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<OrganizationModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <IsActive>false</IsActive>
+  <IsDeleted>false</IsDeleted>
+  <DeletedBy xsi:nil="true" />
+  <DeletedDate xsi:nil="true" />
+  <CreatedBy xsi:nil="true" />
+  <CreatedDate xsi:nil="true" />
+  <UpdatedDate xsi:nil="true" />
+  <UpdatedBy xsi:nil="true" />
+  <Id>0</Id>
+  <OrganizationName>Tester</OrganizationName>
+  <BusinessName>Test</BusinessName>
+  <Description>Test</Description>
+  <Address1>Test</Address1>
+  <City>Test</City>
+  <StateID xsi:nil="true" />
+  <Zip>324234</Zip>
+  <CountryID xsi:nil="true" />
+  <Email>Test</Email>
+  <UserModelObj>
+    <IsActive>false</IsActive>
+    <IsDeleted>false</IsDeleted>
+    <DeletedBy xsi:nil="true" />
+    <DeletedDate xsi:nil="true" />
+    <CreatedBy xsi:nil="true" />
+    <CreatedDate xsi:nil="true" />
+    <UpdatedDate xsi:nil="true" />
+    <UpdatedBy xsi:nil="true" />
+    <UserId>0</UserId>
+    <AccessFailedCount>0</AccessFailedCount>
+    <IsBlock>false</IsBlock>
+    <BlockDateTime xsi:nil="true" />
+    <RoleID>0</RoleID>
+    <IsOnline>false</IsOnline>
+    <OrganizationID>0</OrganizationID>
+    <PasswordResetDate xsi:nil="true" />
+  </UserModelObj>
+  <OrganizationSMTPModelObj>
+    <IsActive>false</IsActive>
+    <IsDeleted>false</IsDeleted>
+    <DeletedBy xsi:nil="true" />
+    <DeletedDate xsi:nil="true" />
+    <CreatedBy xsi:nil="true" />
+    <CreatedDate xsi:nil="true" />
+    <UpdatedDate xsi:nil="true" />
+    <UpdatedBy xsi:nil="true" />
+    <Id>0</Id>
+    <OrganizationID>155</OrganizationID>
+  </OrganizationSMTPModelObj>
+  <OrganizationID>155</OrganizationID>
+</OrganizationModel>
