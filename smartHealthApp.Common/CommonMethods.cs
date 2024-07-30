@@ -1,4 +1,5 @@
 ﻿using smartHealthApp.Common.Properties;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,7 @@ namespace smartHealthApp.Common
 {
     public class CommonMethods
     {
+        
         public static class EncryptDecryptKey
         {
             public readonly static string Key = "MAKV2SPBNI99212";

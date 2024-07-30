@@ -72,19 +72,19 @@ namespace smartHealthApp.DataAccess.Repository.Organization
                 return result.Id;
             }
         }
-        public async Task<int> CheckOrganizationBusinessName(string businessName)
+        public async Task<int> CheckOrganizationBusinessName(string businessName, int orgId)
         {
             try
             {
                 var dbConnection = new GenericRepository<int>(DatabaseHelper.HCOrganization);
-                {
-                    var result = await dbConnection.ExcuteProcedureWithSingleResult_Async(DatabaseHelper.sp_GetOrganizationDetailsByBusinessName,
+
+                var result = await dbConnection.ExcuteProcedureWithSingleResult_Async(DatabaseHelper.sp_GetOrganizationDetailsByBusinessName,
                     new
                     {
-                        @businessName = businessName,
+                        businessName,
+                        organizationId = orgId,
                     });
-                    return result;
-                }
+                return Convert.ToInt32(result);
             }
             catch (Exception ex)
             {

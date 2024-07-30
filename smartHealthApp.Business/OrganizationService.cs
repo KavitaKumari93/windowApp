@@ -16,6 +16,7 @@ using System.Xml.Serialization;
 using System.Xml;
 using smartHealthApp.Common.Properties;
 using smartHealthApp.DataAccess;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace smartHealthApp.Business
 {
@@ -88,9 +89,10 @@ namespace smartHealthApp.Business
             }
             CommonMethods.SaveToXmlFile(organizationModel, (Path.Combine(folderPath, DefaultSettings.SettingFileName)));
         }
-        public Task<int> CheckOrganizationBusinessName(string businessName)
+        public Task<int> CheckOrganizationBusinessName(string businessName, int orgId)
         {
-            return Task.Run(async () => await organizationRepository.CheckOrganizationBusinessName(businessName));
+            return Task.Run(async () => await organizationRepository.CheckOrganizationBusinessName(businessName, orgId));
+           
         }
         public  Task<int> SaveOrUpdateOrganizationSMTPDetails(OrganizationSMTPModel organizationSMTPDetailObj)
         {

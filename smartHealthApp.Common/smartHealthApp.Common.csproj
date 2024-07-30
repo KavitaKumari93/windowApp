@@ -64,17 +64,19 @@
     <Compile Include="CommonMethods.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Enum\AppMessageType.cs" />
+    <Compile Include="Enum\DashboardModules.cs" />
     <Compile Include="Enum\NavigationPages.cs" />
     <Compile Include="Enum\Roles.cs" />
     <Compile Include="Enum\Transition.cs" />
+    <Compile Include="Navigation\NavigationResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\DefaultSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DefaultSettings.resx</DependentUpon>
     </Compile>
-    <Compile Include="PropertyChangeHelper.cs" />
-    <Compile Include="RelayCommandHelper.cs" />
+    <Compile Include="Helpers\PropertyChangeHelper.cs" />
+    <Compile Include="Helpers\RelayCommandHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\DefaultSettings.resx">

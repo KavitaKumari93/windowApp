@@ -27,8 +27,10 @@ C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\bin\Debug
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\bin\Debug\Dapper.xml
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\bin\Debug\de\MahApps.Metro.resources.dll
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\smartHealthApp.csproj.AssemblyReference.cache
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\Styles\ListViewStyles.baml
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\Styles\ButtonStyles.baml
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\UserControls\AddEditUser.g.cs
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\UserControls\ManageUsers.g.cs
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\Views\MainWindow.g.cs
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\UserControls\Login.g.cs
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\UserControls\Dashboard.g.cs
@@ -39,6 +41,7 @@ C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\smartHealthApp_MarkupCompile.lref
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\App.baml
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\UserControls\AddEditUser.baml
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\UserControls\ManageUsers.baml
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\Views\MainWindow.baml
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\Styles\TextboxStyles.baml
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\UserControls\Login.baml
@@ -51,5 +54,3 @@ C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\smartHea.C39B904C.Up2Date
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\smartHealthApp.exe
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\smartHealthApp.pdb
-C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\UserControls\ManageUsers.g.cs
-C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp\obj\Debug\UserControls\ManageUsers.baml

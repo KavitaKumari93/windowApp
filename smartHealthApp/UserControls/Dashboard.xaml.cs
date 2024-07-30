@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using smartHealthApp.ViewModel;
 
 namespace smartHealthApp.UserControls
 {
@@ -21,16 +22,30 @@ namespace smartHealthApp.UserControls
     /// </summary>
     public partial class Dashboard : MetroWindow
     {
-        private bool _disposed;
-        private bool _hideOnClose = true;
+        
 
         public Dashboard()
         {
+            InitializeComponent();
+            this.DataContext = new DashboardViewModel();
+           // leftNavigationTitle.Visibility = Visibility.Visible;
         }
 
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //leftNavigationTitle.IsOpen = !leftNavigationTitle.IsOpen;
+            //flyoutTitle.Visibility= leftNavigationTitle.IsOpen?Visibility.Visible:Visibility.Collapsed;
+            //if (leftPanelTitle.Visibility == Visibility.Visible)
+            //{
+            //    leftPanelTitle.Visibility = Visibility.Collapsed;
+            //}
+            //else
+            //    leftPanelTitle.Visibility = Visibility.Visible;
         }
     }
 }

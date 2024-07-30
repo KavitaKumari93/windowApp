@@ -1,77 +1,96 @@
-﻿<Controls:MetroWindow x:Class="smartHealthApp.UserControls.Dashboard"
+﻿<themeWindow:MetroWindow x:Class="smartHealthApp.UserControls.Dashboard"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                       xmlns:local="clr-namespace:smartHealthApp.UserControls"
-                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls" 
-                      xmlns:viewmodel="clr-namespace:smartHealthApp.ViewModel;assembly=smartHealthApp.ViewModel"
-                      d:DataContext="{d:DesignInstance Type=viewmodel:DashboardViewModel}"
+                      xmlns:themeWindow="http://metro.mahapps.com/winfx/xaml/controls" 
+                      xmlns:vm="clr-namespace:smartHealthApp.ViewModel;assembly=smartHealthApp.ViewModel"
+                      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
                       mc:Ignorable="d" 
                       Background="AliceBlue">
+    <themeWindow:MetroWindow.Resources>
+        <BitmapImage x:Key="smartHealthImage" UriSource="pack://application:,,,/Images/smarthealth.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <BitmapImage x:Key="hamburgerImage" UriSource="pack://application:,,,/Images/hamburger.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <!--#region Top items of Left Panel-->
+        <DataTemplate DataType="{x:Type vm:AddEditUserViewModel}">
+            <local:AddEditUser/>
+        </DataTemplate>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        <DataTemplate DataType="{x:Type vm:ManageUserViewModel}">
+            <local:ManageUsers/>
+        </DataTemplate>
+    </themeWindow:MetroWindow.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition  Height="95*"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="{StaticResource smartHealthImage}" Width="180" Height="55" />
+            <Image  Grid.Column="1" Source="{StaticResource hamburgerImage}" Width="30" Height="20">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding HandleLeftPanelCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DockPanel>
+                <!--<themeWindow:FlyoutsControl x:Name="flyoutTitle" >
+                    <themeWindow:Flyout x:Name="leftNavigationTitle" FlowDirection="LeftToRight" >
+                        <themeWindow:Flyout.HeaderTemplate>
+                            <DataTemplate>
+                                <Grid Background="LightBlue" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="85*"/>
+                                        <ColumnDefinition Width="15*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Dashboard" FontSize="16" VerticalAlignment="Center" TextAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </themeWindow:Flyout.HeaderTemplate>
+                        <Grid Width="300">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50*"/>
+                                <RowDefinition Height="25*"/>
+                                <RowDefinition Height="25*"/>
+                            </Grid.RowDefinitions>
 
-        <!-- Flyout on the left -->
-        <Controls:FlyoutsControl x:Name="flyoutIcon" Background="Transparent">
-            <Controls:Flyout x:Name="leftNavigationIcons" Position="Left" Header="Navigation">
-                <StackPanel>
-                    <TextBlock Text="Static Data 1" Width="100" Height="60"/>
-                    <TextBlock Text="Static Data 2" Width="100" Height="60"/>
-                    <TextBlock Text="Static Data 3" Width="100" Height="60"/>
-                </StackPanel>
-            </Controls:Flyout>
-        </Controls:FlyoutsControl>
+                            <ListView Margin="0 2 0 0" Name="lstTitlePanel" VerticalAlignment="Top"  Background="LightGray"
+                             ItemsSource="{Binding NavigationModelList,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                             SelectedItem="{Binding SelectedMenu,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                             ItemContainerStyle="{DynamicResource ListViewItemStyle}"/>
 
-        <!-- Flyout on the right --><!--
-        <Controls:FlyoutsControl x:Name="flyoutsControl">
-            <Controls:Flyout x:Name="FirstFlyout"
-                             Position="Left"
-                             AreAnimationsEnabled="True"
-                             Header="Settings">
-                <Grid Margin="10">
+                        </Grid>
+                    </themeWindow:Flyout>
+                </themeWindow:FlyoutsControl>-->
+                <Grid Width="300" x:Name="leftPanelTitle" Visibility="{Binding IsLeftPanelVisible, UpdateSourceTrigger=PropertyChanged}" >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="25*"/>
                     </Grid.RowDefinitions>
-                    <StackPanel>
-                        <TextBlock Text="Settings Flyout" />
-                        <TextBlock Text="This Flyout animates its opacity when opening and closing." />
-                    </StackPanel>
-                    <TabControl Grid.Row="1">
-                        <TabItem Header="Settings">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <StackPanel Orientation="Vertical">
-                                    <TextBox Text="TextBox 01" />
-                                    <TextBox Margin="0 5 0 0" Text="TextBox 02" />
-                                    <TextBox Margin="0 5 0 0" Text="TextBox 03" />
-                                    <TextBox Margin="0 5 0 0" Text="TextBox 04" />
-                                    <TextBox Margin="0 5 0 0" Text="TextBox 05" />
-                                </StackPanel>
-                            </ScrollViewer>
-                        </TabItem>
-                        <TabItem Header="Empty" />
-                    </TabControl>
-                    <UniformGrid Grid.Row="2" Margin="10" Columns="2">
-                        <Button Margin="10" Content="Save" Style="{DynamicResource MahApps.Styles.Button.Square}" />
-                        <Button Margin="10" Content="Cancel" Style="{DynamicResource MahApps.Styles.Button.Square}" />
-                    </UniformGrid>
-                </Grid>
-            </Controls:Flyout>
-        </Controls:FlyoutsControl>-->
 
-        <StackPanel Grid.Column="1">
-            <TextBlock Text="Main Content Area" />
-            <Button Content="Open Left Flyout" Command="{Binding ShowLeftFlyoutCommand}" />
-            <Button Content="Open Right Flyout" Command="{Binding ShowRightFlyoutCommand}" />
-        </StackPanel>
+                    <ListView Margin="0 2 0 0" Name="lstTitlePanel" VerticalAlignment="Top"  Background="LightGray"
+                       ItemsSource="{Binding NavigationModelList,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                       SelectedItem="{Binding SelectedMenu,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                       ItemContainerStyle="{DynamicResource ListViewItemStyle}"/>
+
+                </Grid>
+
+                <Grid  Background="Gray"   >
+                    <ContentPresenter x:Name="workingRegion" Content="{Binding CurrentView,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+            </DockPanel>
+        </Grid>
     </Grid>
-</Controls:MetroWindow>
+</themeWindow:MetroWindow>
 
    

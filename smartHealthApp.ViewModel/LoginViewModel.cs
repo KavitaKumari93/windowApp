@@ -1,6 +1,6 @@
-﻿
-using smartHealthApp.Business;
+﻿using smartHealthApp.Business;
 using smartHealthApp.Common;
+using smartHealthApp.Common.Helpers;
 using smartHealthApp.Common.AppMessenger;
 using smartHealthApp.Common.Enum;
 using smartHealthApp.Models;
@@ -95,15 +95,22 @@ namespace smartHealthApp.ViewModel
             IsAgencyPortalSelected = false;
             PatientLoginDetailsObj = new LoginModel();
         }
-        public void VerifyBusiness()
+        public int CheckIfAgencyDetailsExists()
+        {
+            OrganizationModel organizationModel = new OrganizationModel();
+            var result = CommonMethods.ReadFile(organizationModel);
+            return result is OrganizationModel orgModel ? orgModel.OrganizationID : 0;
+        }
+        public  void VerifyBusiness()
         {
             try
             {
                 synchronizationContext = SynchronizationContext.Current;
                 if (!string.IsNullOrEmpty(VerifyBussinessName))
                 {
-                    var orgId = new OrganizationService().CheckOrganizationBusinessName(VerifyBussinessName);
-                    OrganizationModelObj.OrganizationID = orgId.Result > 0 ? orgId.Result : 0;
+                    var org=  new OrganizationService().CheckOrganizationBusinessName(VerifyBussinessName,164);
+                    OrganizationModelObj.OrganizationID = org.Result;
+                   
                     if (OrganizationModelObj.OrganizationID == 0)
                         synchronizationContext.Send(new SendOrPostCallback(o =>
                         {
@@ -149,7 +156,7 @@ namespace smartHealthApp.ViewModel
         }
         public void NavigateToDashboardScreen()
         {
-            AppMessenger.Navigate(NavigationPages.AddEditUser);
+            AppMessenger.Navigate(NavigationPages.Dashboard);
         }
         #endregion
     }

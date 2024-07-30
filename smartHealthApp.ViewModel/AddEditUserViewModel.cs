@@ -1,5 +1,6 @@
 ﻿using smartHealthApp.Business;
 using smartHealthApp.Common;
+using smartHealthApp.Common.Helpers;
 using smartHealthApp.Models;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,6 @@ namespace smartHealthApp.ViewModel
 {
     public class AddEditUserViewModel : PropertyChangeHelper
     {
-        //private SynchronizationContext synchronizationContext;
-        //private UserService userService;
 
         #region Properties
         private StaffModel _staffModelObj;
@@ -27,6 +26,8 @@ namespace smartHealthApp.ViewModel
         #region Commands
         public RelayCommandHelper SaveUserCommand {  get; set; }
         public RelayCommandHelper SaveContinueCommand { get; set; }
+       
+
         #endregion
 
         public AddEditUserViewModel()
@@ -41,7 +42,6 @@ namespace smartHealthApp.ViewModel
         private void SaveUserMethod()
         {
             var data=new UserService().SaveOrUpdateUserAsync(StaffModelObj);
-
 
         }
         private void SaveContinueMethod()

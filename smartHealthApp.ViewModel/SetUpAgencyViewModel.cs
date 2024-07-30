@@ -1,5 +1,6 @@
 ﻿using smartHealthApp.Business;
 using smartHealthApp.Common;
+using smartHealthApp.Common.Helpers;
 using smartHealthApp.Common.AppMessenger;
 using smartHealthApp.Common.Enum;
 using smartHealthApp.Models;

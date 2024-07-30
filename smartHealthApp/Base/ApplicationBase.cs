@@ -83,20 +83,7 @@ namespace smartHealthApp.Base
                     }
                     MainWindow.BlockMainScreenArea.Content = DashboardUC;
                     break;
-                case NavigationPages.AddEditUser:
-                    if (AddEditUserUC == null)
-                    {
-                        AddEditUserUC = new AddEditUser();
-                    }
-                    MainWindow.BlockMainScreenArea.Content = AddEditUserUC;
-                    break;
-                case NavigationPages.ManageUsers:
-                    if (ManageUsersUC == null)
-                    {
-                        ManageUsersUC = new ManageUsers();
-                    }
-                    MainWindow.BlockMainScreenArea.Content = ManageUsersUC;
-                    break;
+              
             }
         }
 

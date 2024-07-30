@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddEditUserViewModel.cs" />
+    <Compile Include="ManageUserViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
     <Compile Include="DashboardViewModel.cs" />
     <Compile Include="MainViewModel.cs" />

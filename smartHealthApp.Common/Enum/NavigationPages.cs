@@ -11,7 +11,5 @@ namespace smartHealthApp.Common.Enum
         Login,
         SetUpForAgency,
         Dashboard,
-        AddEditUser, 
-        ManageUsers
     }
 }

@@ -1,6 +1,9 @@
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\smartHealthApp.ViewModel.dll
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\smartHealthApp.ViewModel.pdb
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\CommonServiceLocator.dll
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\ControlzEx.dll
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\MahApps.Metro.dll
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\Microsoft.Xaml.Behaviors.dll
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\smartHealthApp.Business.dll
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\smartHealthApp.Common.dll
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\smartHealthApp.Models.dll
@@ -11,10 +14,17 @@ C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\smartHealthApp.Business.pdb
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\smartHealthApp.Common.pdb
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\smartHealthApp.Models.pdb
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\ControlzEx.pdb
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\ControlzEx.xml
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\MahApps.Metro.pdb
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\MahApps.Metro.xml
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\Microsoft.Xaml.Behaviors.xml
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\smartHealthApp.DataAccess.pdb
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\GalaSoft.MvvmLight.pdb
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\GalaSoft.MvvmLight.xml
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\Dapper.xml
+C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\bin\Debug\de\MahApps.Metro.resources.dll
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\obj\Debug\smartHealthApp.ViewModel.csproj.AssemblyReference.cache
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\obj\Debug\smartHealthApp.ViewModel.csproj.CoreCompileInputs.cache
 C:\Users\kavita.ms.SDEICHD0\source\repos\smartHealthApp\smartHealthApp.ViewModel\obj\Debug\smartHea.C7A7BFD8.Up2Date
