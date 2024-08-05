@@ -35,48 +35,62 @@ namespace smartHealthApp.Business
         }
         public async Task<int> SaveOrganizationAsync(OrganizationModel organizationModelObj)
         {
-
-
-            // Save master organization
-            var organizationId = await masterOrganizationRepository.SaveMasterOrganizationDetails(organizationModelObj);
-            if (organizationId > 0)
+            try
             {
-                // // Update Organization model with organization ID of masterorganization  and then Save organization
-                organizationModelObj.OrganizationID = organizationId;
-                organizationModelObj.OrganizationSMTPModelObj.OrganizationID = organizationId;
-                await Task.Run(async () => await organizationRepository.SaveOrUpdateOrganizationDetails(organizationModelObj));
+                // Save master organization
+                var organizationId = await masterOrganizationRepository.SaveMasterOrganizationDetails(organizationModelObj);
 
-                //Save Default Roles for this organization
-                foreach (Roles role in Enum.GetValues(typeof(Roles)))
+                if (organizationId > 0)
                 {
-                    UserRoleModel userRoles = new UserRoleModel
+                    // Update Organization model with organization ID of masterorganization and then Save organization
+                    organizationModelObj.OrganizationID = organizationId;
+                    organizationModelObj.OrganizationSMTPModelObj.OrganizationID = organizationId;
+
+                    await organizationRepository.SaveOrUpdateOrganizationDetails(organizationModelObj);
+
+                    // Save Default Roles for this organization
+                    var roleTasks = new List<Task>();
+                    foreach (Roles role in Enum.GetValues(typeof(Roles)))
                     {
-                        UserType = role.ToString().ToUpper(),
-                        RoleName = role.ToString(),
-                        IsActive = true,
-                        IsDeleted = false,
-                        OrganizationID = organizationId
-                    };
-                    await roleRepository.SaveOrUpdateUserRole(userRoles);
+                        UserRoleModel userRoles = new UserRoleModel
+                        {
+                            UserType = role.ToString().ToUpper(),
+                            RoleName = role.ToString(),
+                            IsActive = true,
+                            IsDeleted = false,
+                            OrganizationID = organizationId
+                        };
+                        roleTasks.Add(roleRepository.SaveOrUpdateUserRole(userRoles));
+                    }
+                    // Add User
+                    organizationModelObj.UserModelObj.OrganizationID = organizationId;
+                    organizationModelObj.UserModelObj.CreatedBy = null; // token.UserID;
+                    organizationModelObj.UserModelObj.CreatedDate = DateTime.UtcNow;
+                    organizationModelObj.UserModelObj.IsActive = true;
+                    organizationModelObj.UserModelObj.RoleID = (int)Roles.Admin;
+                    var saveUserTask=userRepository.SaveOrUpdateUserDetails(organizationModelObj.UserModelObj);
+
+                    // Save SMTP details
+                    organizationModelObj.OrganizationSMTPModelObj.OrganizationID = organizationId;
+                    var saveSMTPTask = SaveOrUpdateOrganizationSMTPDetails(organizationModelObj.OrganizationSMTPModelObj);
+
+                    // Wait for all tasks to complete
+                    await Task.WhenAll(roleTasks);
+                    await Task.WhenAll(saveUserTask, saveSMTPTask);
+                    // Save Agency locally
+                    SaveAgencyDetailsLocally(organizationModelObj);
                 }
-                //Add User
-                organizationModelObj.UserModelObj.OrganizationID = organizationId;
-                organizationModelObj.UserModelObj.CreatedBy = null;// token.UserID;
-                organizationModelObj.UserModelObj.CreatedDate = DateTime.UtcNow;
-                organizationModelObj.UserModelObj.IsActive = true;
-                organizationModelObj.UserModelObj.RoleID = (int)Roles.Admin;
-                await Task.Run(async () => await userRepository.SaveOrUpdateUserDetails(organizationModelObj.UserModelObj));
 
-                // Update SMTP model with organization ID
-                organizationModelObj.OrganizationSMTPModelObj.OrganizationID = organizationId;
-                // Save SMTP details
-                await Task.Run(async () => await SaveOrUpdateOrganizationSMTPDetails(organizationModelObj.OrganizationSMTPModelObj));
-
-                //Save Agency locallyy
-                SaveAgencyDetailsLocally(organizationModelObj);
+                return organizationId;
             }
-            return organizationId;
+            catch (Exception ex)
+            {
+                // Log the exception (consider using a logging framework instead of Console.WriteLine)
+                Console.WriteLine(ex.Message);
+                return 0;
+            }
         }
+
         public void SaveAgencyDetailsLocally(OrganizationModel organizationModel)
         {
             string baseDirectory = Path.GetPathRoot(Environment.SystemDirectory);

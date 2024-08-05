@@ -74,11 +74,14 @@
     <Compile Include="UserControls\AddEditUser.xaml.cs">
       <DependentUpon>AddEditUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Dashboard\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Dashboard.xaml.cs">
-      <DependentUpon>Dashboard.xaml</DependentUpon>
+    <Compile Include="UserControls\MainDashboardArea.xaml.cs">
+      <DependentUpon>MainDashboardArea.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ManageUsers.xaml.cs">
       <DependentUpon>ManageUsers.xaml</DependentUpon>
@@ -86,6 +89,10 @@
     <Compile Include="UserControls\SetUpAgency.xaml.cs">
       <DependentUpon>SetUpAgency.xaml</DependentUpon>
     </Compile>
+    <Page Include="Styles\GridStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\ListViewStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,7 +101,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\Dashboard\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MainDashboardArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ManageUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SideBar\Navbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,6 +129,9 @@
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="CustomControl\FocusBehaviour.cs" />
     <Compile Include="CustomControl\TextBoxWithLabel.cs" />
+    <Compile Include="UserControls\SideBar\Navbar.xaml.cs">
+      <DependentUpon>Navbar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -123,10 +145,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,6 +182,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Theme\" />
+    <Folder Include="UserControls\AgencySetup\" />
+    <Folder Include="UserControls\Login\" />
+    <Folder Include="UserControls\Patient\" />
+    <Folder Include="UserControls\User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\smartHealthApp.Common\smartHealthApp.Common.csproj">

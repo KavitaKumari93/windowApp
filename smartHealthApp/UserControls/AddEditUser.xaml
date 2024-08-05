@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:smartHealthApp.UserControls"
+             xmlns:themeCtrl="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:custom="clr-namespace:smartHealthApp.CustomControl"
              mc:Ignorable="d" >
     <UserControl.Resources>
@@ -56,9 +57,6 @@
         </Style>
     </UserControl.Resources>
 
-
-    
-        
         <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Visible">
         <Grid>
             <TabControl x:Name="tabctrl" >
@@ -84,11 +82,11 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <custom:TextBoxWithLabel Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="First Name" Text="{Binding StaffModelObj.FirstName,UpdateSourceTrigger=PropertyChanged}" />
+                            <custom:TextBoxWithLabel Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="15" TextBoxInfo="First Name" Text="{Binding StaffModelObj.FirstName,UpdateSourceTrigger=PropertyChanged}" />
 
-                            <custom:TextBoxWithLabel  Grid.Column="1"  Margin="0,0,5,0" HorizontalAlignment="Left" Style="{StaticResource TextBoxWithLabel}" MaxLength="50" TextBoxInfo="Middle Name" Text="{Binding StaffModelObj.MiddleName,UpdateSourceTrigger=PropertyChanged}" />
+                            <custom:TextBoxWithLabel  Grid.Column="1"  Margin="0,0,5,0" HorizontalAlignment="Left" Style="{StaticResource TextBoxWithLabel}" MaxLength="15" TextBoxInfo="Middle Name" Text="{Binding StaffModelObj.MiddleName,UpdateSourceTrigger=PropertyChanged}" />
 
-                            <custom:TextBoxWithLabel Grid.Column="2" Style="{StaticResource TextBoxWithLabel}"  HorizontalAlignment="Left"  MaxLength="50" TextBoxInfo="Last Name" Text="{Binding StaffModelObj.LastName,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Column="2" Style="{StaticResource TextBoxWithLabel}"  HorizontalAlignment="Left"  MaxLength="15" TextBoxInfo="Last Name" Text="{Binding StaffModelObj.LastName,UpdateSourceTrigger=PropertyChanged}"/>
 
                         </Grid>
                         <!--Address Block-->
@@ -119,16 +117,16 @@
 
                             <!--Row-1 Address***/APT/Unit-->
 
-                            <custom:TextBoxWithLabel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Address*" Text="{Binding StaffModelObj.Address,UpdateSourceTrigger=PropertyChanged}"  />
+                            <custom:TextBoxWithLabel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="40" TextBoxInfo="Address*" Text="{Binding StaffModelObj.Address,UpdateSourceTrigger=PropertyChanged}"  />
 
-                            <custom:TextBoxWithLabel Grid.Column="2" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Apt/Unit*" Text="{Binding StaffModelObj.ApartmentNumber,UpdateSourceTrigger=PropertyChanged}" />
+                            <custom:TextBoxWithLabel Grid.Column="2" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left"  TextBoxInfo="Apt/Unit*" MaxLength="10" Text="{Binding StaffModelObj.ApartmentNumber,UpdateSourceTrigger=PropertyChanged}" />
 
 
                             <!--Row-2 Country, City , State-->
 
                             <!--IsEnabled="False" // To be continued with stateId , Country Id-->
 
-                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Country" IsEnabled="False"  Text="{Binding StaffModelObj.Country,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="20" TextBoxInfo="Country" IsEnabled="False"  Text="{Binding StaffModelObj.Country,UpdateSourceTrigger=PropertyChanged}"/>
 
                             <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="City" Text="{Binding StaffModelObj.City,UpdateSourceTrigger=PropertyChanged}" />
 
@@ -137,16 +135,16 @@
 
                             <!--Row-3 Zip, Phone, NPI-->
 
-                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Zip*"  Text="{Binding StaffModelObj.Zip,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="6" TextBoxInfo="Zip*"  Text="{Binding StaffModelObj.Zip,UpdateSourceTrigger=PropertyChanged}"/>
 
-                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Phone Number" Text="{Binding StaffModelObj.PhoneNumber,UpdateSourceTrigger=PropertyChanged}" />
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="10" TextBoxInfo="Phone Number" Text="{Binding StaffModelObj.PhoneNumber,UpdateSourceTrigger=PropertyChanged}" />
 
-                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="3"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="NPI#"  Text="{Binding StaffModelObj.NPINumber,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="3"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="10" TextBoxInfo="NPI#"  Text="{Binding StaffModelObj.NPINumber,UpdateSourceTrigger=PropertyChanged}"/>
 
 
                             <!--Row-4 Tax ID, Date of Birth, Date of Hire-->
 
-                            <custom:TextBoxWithLabel Grid.Row="6" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Tax ID*"  Text="{Binding StaffModelObj.TaxId,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Row="6" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="15" TextBoxInfo="Tax ID*"  Text="{Binding StaffModelObj.TaxId,UpdateSourceTrigger=PropertyChanged}"/>
 
                             <custom:TextBoxWithLabel Grid.Row="6" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Date of Birth*" Text="{Binding StaffModelObj.DOB,UpdateSourceTrigger=PropertyChanged}" />
 
@@ -166,7 +164,7 @@
 
                             <!--Row-6 CAQH ID ,Language, Degree-->
 
-                            <custom:TextBoxWithLabel Grid.Row="10" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="CAQH ID "  Text="{Binding StaffModelObj.CAQHID,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Row="10" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="20" TextBoxInfo="CAQH ID "  Text="{Binding StaffModelObj.CAQHID,UpdateSourceTrigger=PropertyChanged}"/>
 
                             <custom:TextBoxWithLabel Grid.Row="10" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Language" Text="{Binding StaffModelObj.Language,UpdateSourceTrigger=PropertyChanged}" />
 
@@ -176,7 +174,7 @@
 
                             <!--Row-7 Practitioner id, Pay Rate, Payroll Group-->
 
-                            <custom:TextBoxWithLabel Grid.Row="12" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="BHPN Practitioner ID"  Text="{Binding StaffModelObj.EmployeeTypeID,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Row="12" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="20" TextBoxInfo="BHPN Practitioner ID"  Text="{Binding StaffModelObj.EmployeeTypeID,UpdateSourceTrigger=PropertyChanged}"/>
 
                             <custom:TextBoxWithLabel Grid.Row="12" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Pay Rate*" Text="{Binding StaffModelObj.PayRate,UpdateSourceTrigger=PropertyChanged}"  />
 
@@ -186,11 +184,11 @@
 
                             <!--Row-8 UserName, Password, Conmfirm Password-->
 
-                            <custom:TextBoxWithLabel Grid.Row="14" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="User Name*"  Text="{Binding  StaffModelObj.UserObj.UserName,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Row="14" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="20" TextBoxInfo="User Name*"  Text="{Binding  StaffModelObj.UserObj.UserName,UpdateSourceTrigger=PropertyChanged}"/>
 
-                            <custom:TextBoxWithLabel Grid.Row="14" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Password*" Text="{Binding  StaffModelObj.UserObj.Password,UpdateSourceTrigger=PropertyChanged}" />
+                            <custom:TextBoxWithLabel Grid.Row="14" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="20" TextBoxInfo="Password*" Text="{Binding  StaffModelObj.UserObj.Password,UpdateSourceTrigger=PropertyChanged}" />
 
-                            <custom:TextBoxWithLabel Grid.Row="14" Grid.Column="3"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Confirm Password*"  Text="{Binding StaffModelObj.ConfirmPassword,UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+                            <custom:TextBoxWithLabel Grid.Row="14" Grid.Column="3"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="20" TextBoxInfo="Confirm Password*"  Text="{Binding StaffModelObj.ConfirmPassword,UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
 
                         </Grid>
                         <!--Location-->
@@ -282,7 +280,7 @@
 
                         <StackPanel Grid.Row="6"  Orientation="Horizontal" HorizontalAlignment="Right"> 
                             <Button  Content="SAVE" Style="{DynamicResource RoundedButtonStyle}" Width="90" Height="30" Margin="20,0" Command="{Binding SaveUserCommand}"/>
-                            <Button  Content="SAVE AND CONTINUE" Style="{DynamicResource RoundedButtonStyle}" Width="200" Height="30" Command="{Binding SaveContinueCommand}"/>
+                            <Button  Content="SAVE AND CONTINUE" Style="{DynamicResource RoundedButtonStyle}" Width="200" Height="30" Command="{Binding SaveUserCommand}"/>
 
                         </StackPanel>
                     </Grid>
@@ -310,4 +308,5 @@
     </Grid>
     </ScrollViewer>
 
+      
 </UserControl>

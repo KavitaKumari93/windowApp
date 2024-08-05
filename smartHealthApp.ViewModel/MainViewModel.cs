@@ -18,8 +18,8 @@ namespace smartHealthApp.ViewModel
     {
         public MainViewModel()
         {
-            int organizationId = CheckIfAgencyDetailsExists();
-            AppMessenger.Navigate(organizationId > 0 ? NavigationPages.Login : NavigationPages.SetUpForAgency);
+            GlobalData.organizationId  = CheckIfAgencyDetailsExists();
+            AppMessenger.Navigate(GlobalData.organizationId > 0 ? NavigationPages.Login : NavigationPages.SetUpForAgency);
         }
 
         public int CheckIfAgencyDetailsExists()

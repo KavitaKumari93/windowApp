@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\MySmartHealthApp\smartHealthApp\App.xaml
-9-732323583
+12-216349885
 
-181252634834
-231171895043
-Styles\ListViewStyles.xaml;UserControls\AddEditUser.xaml;UserControls\ManageUsers.xaml;Views\MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\TextboxStyles.xaml;UserControls\Login.xaml;UserControls\Dashboard.xaml;UserControls\SetUpAgency.xaml;
+201288205278
+23-1606876811
+Styles\GridStyles.xaml;Styles\ListViewStyles.xaml;UserControls\AddEditUser.xaml;UserControls\Dashboard\Dashboard.xaml;UserControls\MainDashboardArea.xaml;UserControls\ManageUsers.xaml;UserControls\SideBar\Navbar.xaml;Views\MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\TextboxStyles.xaml;UserControls\Login.xaml;UserControls\SetUpAgency.xaml;
 
 True
 

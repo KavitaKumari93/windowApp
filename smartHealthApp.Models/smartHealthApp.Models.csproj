@@ -50,6 +50,8 @@
     <Compile Include="OrganizationSMTPModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoginModel.cs" />
+    <Compile Include="RequestModels\FilterModel.cs" />
+    <Compile Include="RequestModels\ListingFiltterModel.cs" />
     <Compile Include="StaffLocationModel.cs" />
     <Compile Include="StaffModel.cs" />
     <Compile Include="StaffTagsModel.cs" />

@@ -54,6 +54,7 @@
     <Compile Include="Repository\Payroll\PayrollGroupRepository.cs" />
     <Compile Include="Repository\Staff\StaffRepository.cs" />
     <Compile Include="Repository\UserRoles\RoleRepository.cs" />
+    <Compile Include="Repository\User\UserList\UserListRepository.cs" />
     <Compile Include="Repository\User\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

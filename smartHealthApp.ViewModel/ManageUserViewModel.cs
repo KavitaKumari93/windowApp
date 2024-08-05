@@ -1,7 +1,9 @@
-﻿using smartHealthApp.Common;
+﻿using smartHealthApp.Business;
+using smartHealthApp.Common;
 using smartHealthApp.Common.Helpers;
 using smartHealthApp.Common.Navigation;
 using smartHealthApp.Models;
+using smartHealthApp.Models.RequestModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,16 +18,18 @@ namespace smartHealthApp.ViewModel
         #region CTOR
         public ManageUserViewModel()
         {
+         
             AddUserCommand = new RelayCommandHelper(x => AddUser());
+            LoadUsers();
         }
         #endregion
 
         #region Properties
-        private ObservableCollection<StaffModel> _staffList = null;
-        public ObservableCollection<StaffModel> StaffList
+        private ObservableCollection<StaffModel> _staffListObj = null;
+        public ObservableCollection<StaffModel> StaffListObj
         {
-            get { return _staffList; }
-            set { _staffList = value; OnPropertyChanged(); }
+            get { return _staffListObj; }
+            set { _staffListObj = value; OnPropertyChanged(); }
         }
         #endregion
 
@@ -39,11 +43,16 @@ namespace smartHealthApp.ViewModel
 
         }
 
-        public void LoadUsers()
+        public async void LoadUsers()
         {
             try
             {
-                
+                ListingFiltterModel listingFiltter = new ListingFiltterModel();
+                var details =await new UserService().GetStaffUsers(listingFiltter);
+                if (details != null)
+                {
+                    StaffListObj = details.ToObservableCollection();
+                }
             }
             catch(Exception ex)
             {

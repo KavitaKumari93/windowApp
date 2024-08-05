@@ -10,6 +10,7 @@ namespace smartHealthApp.Common.Enum
     {
         Login,
         SetUpForAgency,
+        MainDashboard,
         Dashboard,
     }
 }

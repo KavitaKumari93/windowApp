@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace smartHealthApp.Models
 {
-    public class StaffModel:PropertyChangeHelper
+    public class StaffModel:BaseEntity.BaseEntityModel
     {
         
         private int _staffID;
@@ -18,6 +18,13 @@ namespace smartHealthApp.Models
         {
             get { return _staffID; }
             set { _staffID = value; OnPropertyChanged(); }
+        }
+
+        private string _name;
+        public string Name
+        {
+            get { return this.FirstName + " " + this.MiddleName + " " + this.LastName; }
+            set { _name = value; OnPropertyChanged(); }
         }
 
         private string _firstName;
@@ -270,7 +277,7 @@ namespace smartHealthApp.Models
             set { _payRate = value; OnPropertyChanged(); }
         }
 
-       
+
         //public string DegreeName
         //{
         //    get
@@ -288,6 +295,12 @@ namespace smartHealthApp.Models
         //}
 
        
+        private bool _isBlock;
+        public bool IsBlock
+        {
+            get { return _isBlock; }
+            set { _isBlock = value; OnPropertyChanged(); }
+        }
         public string GenderName { get; set; }
 
        

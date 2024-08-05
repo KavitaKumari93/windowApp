@@ -6,82 +6,139 @@
              xmlns:local="clr-namespace:smartHealthApp.UserControls"
              mc:Ignorable="d" >
 
-    <Grid x:Name="tileContent">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <TextBlock Text="Manage Users"  FontSize="16" Margin="0, 20"   FontWeight="SemiBold"/>
-        <Grid  Grid.Row="1"  >
-            <!--<DataGrid x:Name="dataGrid" Margin="0 .5 5 0" 
-                 ItemsSource="{Binding StaffList}" 
-                 SelectedItem="{Binding SelectedAppointedPatient,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                 AutoGenerateColumns="False" CanUserAddRows="False" FontSize="16" ColumnHeaderHeight="40" ColumnWidth="Auto" VerticalAlignment="Top" HorizontalAlignment="Center" MinRowHeight="35" RowHeaderWidth="0.1" BorderThickness=".1"
-                 RowStyle="{DynamicResource OperationalTab_DataGridRowHoverStyle}" 
-                 ColumnHeaderStyle="{DynamicResource OpeartionalTab_CustomDataGridColumnHeaderStyle}"  
-                 VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn >
-                        <DataGridTemplateColumn.Header >
-                            <TextBlock Text="{x:Static localisation:Resources.Operational_AppointedPatientsGrid_Col_Name_resx}" />
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock  Text="{Binding PatientName}"  Style="{DynamicResource GridColumnText}"   />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-
-                    <DataGridTemplateColumn >
-                        <DataGridTemplateColumn.Header >
-                            <TextBlock Text="{x:Static localisation:Resources.DataGridColHeaderRecordNumber_resx}"  />
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock  Text="{Binding PatientRecordNumber}" Style="{DynamicResource GridColumnText}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.Header>
-                            <TextBlock Text="{x:Static localisation:Resources.Operational_AppointedPatientsGrid_Col_RoomName_resx}" />
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock  Text="{Binding RoomName}"  Style="{DynamicResource GridColumnText}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+    <Grid x:Name="tile" Style="{DynamicResource CommonGridStyle}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="94*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="47"/>
+                <RowDefinition Height="92*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Manage Users" Grid.Row="1"   FontSize="20"  FontWeight="DemiBold"/>
 
 
+            <Grid  Grid.Row="3" Background="White"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="90*"/>
+                </Grid.RowDefinitions>
+                <DockPanel >
+                    <TextBlock Text="Tag" Width="50"></TextBlock>
+                    <TextBlock Text="Role" Width="50"></TextBlock>
+                    <TextBlock Text="Search" Width="50"></TextBlock>
+                    <TextBlock Text="ClearAll" Width="50"></TextBlock>
+                    <Button   Content="+ Add User" Style="{DynamicResource RoundedButtonStyle}"
+                              Width="90" Height="30" Command="{Binding VerifyBusinessCommand,UpdateSourceTrigger=PropertyChanged}"
+                              HorizontalAlignment="Right"  />
 
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.Header>
-                            <TextBlock Text="{x:Static localisation:Resources.Operational_AppointedPatientsGrid_Col_DoctorName_resx}"/>
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock  Text="{Binding DoctorName}" Style="{DynamicResource GridColumnText}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                </DockPanel>
+                <DataGrid x:Name="dataGrid"   Grid.Row="1"
+                    ItemsSource="{Binding StaffListObj, UpdateSourceTrigger=PropertyChanged}" 
+                          AutoGenerateColumns="False"
+                    CanUserAddRows="False" FontSize="16" ColumnHeaderHeight="40"
+                    VerticalAlignment="Top" HorizontalAlignment="Center" 
+                    VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn MinWidth="200">
+
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="NAME"  HorizontalAlignment="Center"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  HorizontalAlignment="Center" Text="{Binding Name}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn MinWidth="200">
+                            <DataGridTemplateColumn.Header >
+                                <TextBlock Text="USER NAME" HorizontalAlignment="Center"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  HorizontalAlignment="Center" Text="{Binding UserName}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn MinWidth="200">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="ROLE" HorizontalAlignment="Center"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  HorizontalAlignment="Center" Text="{Binding Role}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn MinWidth="200">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="PHONE" HorizontalAlignment="Center"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  HorizontalAlignment="Center" Text="{Binding PhoneNumber}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn MinWidth="200">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="DATE JOINED" HorizontalAlignment="Center"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  HorizontalAlignment="Center" Text="{Binding DOJ}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        
+                        <DataGridTemplateColumn MinWidth="200">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="ACTIVE" HorizontalAlignment="Center"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  HorizontalAlignment="Center" Text="{Binding IsActive}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn MinWidth="200">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="LOCK USER" HorizontalAlignment="Center"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  HorizontalAlignment="Center" Text="{Binding DOJ}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        
+                        <DataGridTemplateColumn MinWidth="200">
+                            <DataGridTemplateColumn.Header>
+                                <TextBlock Text="ACTIONS" HorizontalAlignment="Center"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  HorizontalAlignment="Center" Text="{Binding DOJ}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
 
 
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.Header>
-                            <TextBlock Text="{x:Static localisation:Resources.Operational_AppointedPatientsGrid_Col_AppointmentType_resx}"  />
-                        </DataGridTemplateColumn.Header>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock  Text="{Binding AppointmentType}"  Style="{DynamicResource GridColumnText}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-               
-            </DataGrid>-->
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Grid>
     </Grid>
-  
+
+
+
 </UserControl>

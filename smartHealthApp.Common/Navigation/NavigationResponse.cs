@@ -12,11 +12,12 @@ namespace smartHealthApp.Common.Navigation
 
     public class NavigationResponse : PropertyChangeHelper
     {
-        ObservableCollection<NavigationResponse> lst = null;
+
 
         #region Property
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string TitleHeader { get; set; }
+        public ObservableCollection<string> ListItems { get; set; }
         private string iconKey;
         public string IconKey
         {
@@ -45,9 +46,11 @@ namespace smartHealthApp.Common.Navigation
             {
                 return new ObservableCollection<NavigationResponse>
                 {
-                   new NavigationResponse { Id = (int)DashboardModules.AddEditUser, Name = "Add User", IsSelected = true, IsActive = true },
-                   new NavigationResponse { Id = (int)DashboardModules.ManageUsers, Name = "Manage User", IsSelected = false, IsActive = true }
-                };
+                   new NavigationResponse { Id = (int)DashboardModules.AddEditUser,TitleHeader= "Dashboard", IsSelected = true, IsActive = true },
+                   new NavigationResponse { Id = (int)DashboardModules.AddEditUser,TitleHeader= "Manage User",ListItems = new ObservableCollection<string> { "User List", "Add User" }, IsSelected = true, IsActive = true },
+                   new NavigationResponse { Id = (int)DashboardModules.ManageUsers,TitleHeader= "Manage Patient", ListItems =  new ObservableCollection<string> { "Add Patient" }, IsSelected = false, IsActive = true },
+                   new NavigationResponse { Id = (int)DashboardModules.ManageUsers,TitleHeader= "Scheduling", IsSelected = false, IsActive = true }
+              };
             }
             catch (Exception ex)
             {

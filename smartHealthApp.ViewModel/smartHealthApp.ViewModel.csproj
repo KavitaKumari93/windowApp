@@ -65,10 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddEditUserViewModel.cs" />
+    <Compile Include="MainDashboardViewModel.cs" />
     <Compile Include="ManageUserViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
     <Compile Include="DashboardViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="NavBarViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetUpAgencyViewModel.cs" />
   </ItemGroup>

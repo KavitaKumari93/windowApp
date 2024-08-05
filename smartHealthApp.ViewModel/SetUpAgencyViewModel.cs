@@ -31,7 +31,12 @@ namespace smartHealthApp.ViewModel
             SaveAgencyCommmand = new RelayCommandHelper(x => SaveOrganization());
         }
         #endregion
-
+        private bool _isLoaderActive;
+        public bool IsLoaderActive
+        {
+            get { return _isLoaderActive; }
+            set { _isLoaderActive = value; OnPropertyChanged(); }
+        }
         private OrganizationModel _organizationModelObj;
         public OrganizationModel OrganizationModelObj
         {
@@ -43,28 +48,48 @@ namespace smartHealthApp.ViewModel
         #endregion
 
         #region Methods
-        private void SaveOrganization()
+        private async void SaveOrganization()
         {
             synchronizationContext = SynchronizationContext.Current;
+
             if (!ValidateInfo())
             {
-                var result = new OrganizationService().SaveOrganizationAsync(OrganizationModelObj);
-                if (result != null)
+                try
                 {
-                    synchronizationContext.Send(new SendOrPostCallback(o =>
+                    IsLoaderActive = true;
+                    var result = await new OrganizationService().SaveOrganizationAsync(OrganizationModelObj);
+                    if (result > 0)
                     {
-                        MessageBox.Show("Organization Saved Successfully!!");
-                    }), null);
+                        IsLoaderActive = false;
+                        GlobalData.organizationId = result;
+                        synchronizationContext.Send(_ =>
+                        {
+                            MessageBox.Show("Organization Saved Successfully!!");
+                        }, null);
+                        NavigateToLoginScreen();
+                    }
+                    else
+                    {
+                        synchronizationContext.Send(_ =>
+                        {
+                            MessageBox.Show("Failed to save organization.");
+                        }, null);
+                    }
                 }
-                NavigateToLoginScreen();
+                catch (Exception ex)
+                {
+                    synchronizationContext.Send(_ =>
+                    {
+                        MessageBox.Show($"An error occurred: {ex.Message}");
+                    }, null);
+                }
             }
             else
             {
-                synchronizationContext.Send(new SendOrPostCallback(o =>
+                synchronizationContext.Send(_ =>
                 {
                     MessageBox.Show(_message);
-                }), null);
-              
+                }, null);
             }
         }
 
@@ -96,14 +121,41 @@ namespace smartHealthApp.ViewModel
                 messageBuilder.AppendLine("UserName,");
                 err = true;
             }
+            if (string.IsNullOrEmpty(OrganizationModelObj.ContactPersonFirstName))
+            {
+                messageBuilder.AppendLine("Contact Person FirstName");
+                err = true;
+            }
+
+            if (string.IsNullOrEmpty(OrganizationModelObj.ContactPersonLastName))
+            {
+                messageBuilder.AppendLine("Contact Person LastName");
+                err = true;
+            }
 
             if (string.IsNullOrEmpty(OrganizationModelObj.UserModelObj.Password))
             {
                 messageBuilder.AppendLine("Password");
                 err = true;
             }
+            if (string.IsNullOrEmpty(OrganizationModelObj.OrganizationSMTPModelObj.SMTPUserName))
+            {
+                messageBuilder.AppendLine("SMTP UserName");
+                err = true;
+            }
 
-            _message = messageBuilder.ToString().TrimEnd(); 
+            if (string.IsNullOrEmpty(OrganizationModelObj.OrganizationSMTPModelObj.SMTPPassword))
+            {
+                messageBuilder.AppendLine("SMTP Password");
+                err = true;
+            }
+
+            if (string.IsNullOrEmpty(OrganizationModelObj.OrganizationSMTPModelObj.ConnectionSecurity))
+            {
+                messageBuilder.AppendLine("SMTP ConnectionSecurity");
+                err = true;
+            }
+            _message = messageBuilder.ToString().TrimEnd();
 
             return err;
         }

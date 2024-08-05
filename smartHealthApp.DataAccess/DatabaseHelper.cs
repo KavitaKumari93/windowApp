@@ -33,7 +33,7 @@ namespace smartHealthApp.DataAccess
 
         public const string sp_InsertOrUpdateUser = "InsertOrUpdateUser";
         public const string sp_GetUsersDetailsByOrganizationId = "GetUsersDetailsByOrganizationId";
-
+        public const string sp_GetStaffUsers = "STF_GetStaffUsers";
 
         #region Staff
 

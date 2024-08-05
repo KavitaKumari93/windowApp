@@ -1,15 +1,16 @@
-﻿<themeWindow:MetroWindow x:Class="smartHealthApp.UserControls.Dashboard"
+﻿<UserControl x:Class="smartHealthApp.UserControls.Dashboard"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                       xmlns:local="clr-namespace:smartHealthApp.UserControls"
-                      xmlns:themeWindow="http://metro.mahapps.com/winfx/xaml/controls" 
                       xmlns:vm="clr-namespace:smartHealthApp.ViewModel;assembly=smartHealthApp.ViewModel"
                       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-                      mc:Ignorable="d" 
-                      Background="AliceBlue">
-    <themeWindow:MetroWindow.Resources>
+                      xmlns:themeCtrl="http://metro.mahapps.com/winfx/xaml/controls"
+                      mc:Ignorable="d">
+
+    <!--xmlns:themeWindow="http://metro.mahapps.com/winfx/xaml/controls"-->
+    <UserControl.Resources>
         <BitmapImage x:Key="smartHealthImage" UriSource="pack://application:,,,/Images/smarthealth.png" RenderOptions.BitmapScalingMode="HighQuality"/>
         <BitmapImage x:Key="hamburgerImage" UriSource="pack://application:,,,/Images/hamburger.png" RenderOptions.BitmapScalingMode="HighQuality"/>
         <!--#region Top items of Left Panel-->
@@ -20,30 +21,99 @@
         <DataTemplate DataType="{x:Type vm:ManageUserViewModel}">
             <local:ManageUsers/>
         </DataTemplate>
-    </themeWindow:MetroWindow.Resources>
-    <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition  Height="95*"/>
-        </Grid.RowDefinitions>
-        <Grid Margin="20,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Image Source="{StaticResource smartHealthImage}" Width="180" Height="55" />
-            <Image  Grid.Column="1" Source="{StaticResource hamburgerImage}" Width="30" Height="20">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseLeftButtonUp">
-                        <i:InvokeCommandAction Command="{Binding HandleLeftPanelCommand}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Image>
-        </Grid>
-        <Grid Grid.Row="1">
-            <DockPanel>
-                <!--<themeWindow:FlyoutsControl x:Name="flyoutTitle" >
+        <Style x:Key="CustomExpanderStyle" TargetType="Expander">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Expander">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        Background="{TemplateBinding Background}">
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <ToggleButton x:Name="HeaderToggle"  
+                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"  
+                                      Background="DarkGreen"
+                                      BorderBrush="{TemplateBinding BorderBrush}" 
+                                      BorderThickness="0"
+                                      Grid.Row="0">
+                                    <ToggleButton.Content>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30*" />
+                                                <ColumnDefinition Width="50*" />
+                                                <ColumnDefinition Width="20*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="{StaticResource hamburgerImage}" 
+                                           Width="10" 
+                                           Height="10" 
+                                           VerticalAlignment="Center" 
+                                           Grid.Column="0" 
+                                           HorizontalAlignment="Right"/>
+                                            <TextBlock Text="{TemplateBinding Header}" 
+                                               VerticalAlignment="Center" 
+                                               Grid.Column="1" 
+                                               FontSize="15" 
+                                               Margin="5"/>
+                                            <Image Source="{StaticResource hamburgerImage}" 
+                                           Width="10" 
+                                           Height="10" 
+                                           VerticalAlignment="Center" 
+                                           Grid.Column="2" 
+                                           HorizontalAlignment="Right"/>
+                                        </Grid>
+                                    </ToggleButton.Content>
+                                    
+                                </ToggleButton>
+
+                                <ContentPresenter Grid.Row="1" 
+                                          ContentSource="Content" 
+                                          Visibility="{Binding IsExpanded, 
+                                          RelativeSource={RelativeSource TemplatedParent}, 
+                                          Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                              
+
+                            </Grid>
+                          
+                        </Border>
+                    </ControlTemplate>
+                    
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition  Height="95*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource smartHealthImage}" Width="180" Height="55" />
+                <Image  Grid.Column="1" Source="{StaticResource hamburgerImage}" Width="30" Height="20">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding HandleLeftPanelCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Image>
+            </Grid>
+            <Grid Grid.Row="1">
+                <DockPanel>
+                    <!--<themeWindow:FlyoutsControl x:Name="flyoutTitle" >
                     <themeWindow:Flyout x:Name="leftNavigationTitle" FlowDirection="LeftToRight" >
                         <themeWindow:Flyout.HeaderTemplate>
                             <DataTemplate>
@@ -71,26 +141,57 @@
                         </Grid>
                     </themeWindow:Flyout>
                 </themeWindow:FlyoutsControl>-->
-                <Grid Width="300" x:Name="leftPanelTitle" Visibility="{Binding IsLeftPanelVisible, UpdateSourceTrigger=PropertyChanged}" >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50*"/>
-                        <RowDefinition Height="25*"/>
-                        <RowDefinition Height="25*"/>
-                    </Grid.RowDefinitions>
+                    <Grid Width="300" x:Name="leftPanelTitle" Visibility="{Binding IsLeftPanelVisible, UpdateSourceTrigger=PropertyChanged}" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="25*"/>
+                        </Grid.RowDefinitions>
 
-                    <ListView Margin="0 2 0 0" Name="lstTitlePanel" VerticalAlignment="Top"  Background="LightGray"
+                        <!--<ListView Margin="0 2 0 0" Name="lstTitlePanel" VerticalAlignment="Top"  Background="LightGray"
                        ItemsSource="{Binding NavigationModelList,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
                        SelectedItem="{Binding SelectedMenu,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                       ItemContainerStyle="{DynamicResource ListViewItemStyle}"/>
+                       ItemContainerStyle="{DynamicResource ListViewItemStyle}"/>-->
+                        <ListView x:Name="est"
+                  ItemsSource="{Binding NavigationModelList, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedListItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  Margin="0 2 0 0"
+                  VerticalAlignment="Top"
+                  Background="LightGray">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Expander Style="{StaticResource CustomExpanderStyle}" Header="{Binding TitleHeader}">
+                                        <Expander.Content>
+                                            <ItemsControl ItemsSource="{Binding ListItems}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Button Content="{Binding}" Margin="5,0,0,0" VerticalAlignment="Center"
+                                                    Command="{Binding DataContext.CurrentViewSelectionCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                                    CommandParameter="{Binding}" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </Expander.Content>
+                                    </Expander>
 
-                </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
 
-                <Grid  Background="Gray"   >
-                    <ContentPresenter x:Name="workingRegion" Content="{Binding CurrentView,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-                </Grid>
-            </DockPanel>
+                    <Grid  Background="Gray"   >
+                        <ContentPresenter x:Name="workingRegion" Content="{Binding CurrentView,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+                </DockPanel>
+            </Grid>
         </Grid>
+
+        <themeCtrl:ProgressRing IsActive="{Binding IsLoaderActive,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+        Foreground="{DynamicResource LoaderBrush}" Width="70" Height="70"/>
+
     </Grid>
-</themeWindow:MetroWindow>
+</UserControl>
 
    

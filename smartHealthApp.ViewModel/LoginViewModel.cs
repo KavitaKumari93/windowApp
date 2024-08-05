@@ -95,12 +95,12 @@ namespace smartHealthApp.ViewModel
             IsAgencyPortalSelected = false;
             PatientLoginDetailsObj = new LoginModel();
         }
-        public int CheckIfAgencyDetailsExists()
-        {
-            OrganizationModel organizationModel = new OrganizationModel();
-            var result = CommonMethods.ReadFile(organizationModel);
-            return result is OrganizationModel orgModel ? orgModel.OrganizationID : 0;
-        }
+        //public int CheckIfAgencyDetailsExists()
+        //{
+        //    OrganizationModel organizationModel = new OrganizationModel();
+        //    var result = CommonMethods.ReadFile(organizationModel);
+        //    return result is OrganizationModel orgModel ? orgModel.OrganizationID : 0;
+        //}
         public  void VerifyBusiness()
         {
             try
@@ -108,7 +108,7 @@ namespace smartHealthApp.ViewModel
                 synchronizationContext = SynchronizationContext.Current;
                 if (!string.IsNullOrEmpty(VerifyBussinessName))
                 {
-                    var org=  new OrganizationService().CheckOrganizationBusinessName(VerifyBussinessName,164);
+                    var org = new OrganizationService().CheckOrganizationBusinessName(VerifyBussinessName, GlobalData.organizationId);
                     OrganizationModelObj.OrganizationID = org.Result;
                    
                     if (OrganizationModelObj.OrganizationID == 0)
@@ -143,6 +143,14 @@ namespace smartHealthApp.ViewModel
                     if (adminDetails.UserName == AgencyLoginDetailsObj.UserName && CommonMethods.Decrypt(adminDetails.Password) == AgencyLoginDetailsObj.Password)
                     {
                         NavigateToDashboardScreen();
+                        GlobalData.organizationId= OrganizationModelObj.OrganizationID;
+                    }
+                    else
+                    {
+                        synchronizationContext.Send(new SendOrPostCallback(o =>
+                        {
+                            MessageBox.Show("Invalid Credentials");
+                        }), null);
                     }
                 }
             }
@@ -150,13 +158,13 @@ namespace smartHealthApp.ViewModel
             {
                 synchronizationContext.Send(new SendOrPostCallback(o =>
                 {
-                    Console.Write("Please enter login details");
+                    MessageBox.Show("Please enter login details");
                 }), null);
             }
         }
         public void NavigateToDashboardScreen()
         {
-            AppMessenger.Navigate(NavigationPages.Dashboard);
+            AppMessenger.Navigate(NavigationPages.MainDashboard);
         }
         #endregion
     }

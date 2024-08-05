@@ -4,198 +4,203 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:smartHealthApp.UserControls"
+             xmlns:themeCtrl="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:custom="clr-namespace:smartHealthApp.CustomControl"
              xmlns:converter="clr-namespace:smartHealthApp.Converters"
              mc:Ignorable="d">
-
-    <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <Grid x:Name="header" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="30"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="1" Text="Add Agency Details" FontSize="18" FontWeight="Bold" />
-            <Border Grid.Row="1" Grid.Column="1" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5">
-                <Grid Grid.Row="1" Grid.Column="1" Margin="15,20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <!--Agency Business Name ,and Description Block-->
-                    <Grid >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Visible">
+            <Grid x:Name="header" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Text="Add Agency Details" FontSize="18" FontWeight="Bold" />
+                <Border Grid.Row="1" Grid.Column="1" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5">
+                    <Grid Grid.Row="1" Grid.Column="1" Margin="15,20">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <custom:TextBoxWithLabel Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Agency Name" Text="{Binding OrganizationModelObj.OrganizationName,UpdateSourceTrigger=PropertyChanged}" />
+                        <!--Agency Business Name ,and Description Block-->
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <custom:TextBoxWithLabel Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Agency Name" Text="{Binding OrganizationModelObj.OrganizationName,UpdateSourceTrigger=PropertyChanged}" />
 
-                        <custom:TextBoxWithLabel  Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource TextBoxWithLabel}" MaxLength="50" TextBoxInfo="Business Name" Text="{Binding OrganizationModelObj.BusinessName,UpdateSourceTrigger=PropertyChanged}" />
+                            <custom:TextBoxWithLabel  Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource TextBoxWithLabel}" MaxLength="50" TextBoxInfo="Business Name" Text="{Binding OrganizationModelObj.BusinessName,UpdateSourceTrigger=PropertyChanged}" />
 
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource TextBoxWithLabel}"  HorizontalAlignment="Left"  MaxLength="50" TextBoxInfo="Description" Text="{Binding OrganizationModelObj.Description,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource TextBoxWithLabel}"  HorizontalAlignment="Left"  MaxLength="50" TextBoxInfo="Description" Text="{Binding OrganizationModelObj.Description,UpdateSourceTrigger=PropertyChanged}"/>
 
-                    </Grid>
-                    <!--Address Block-->
-                    <Grid Grid.Row="1" Margin="0,5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <!--Row-1 Address***/APT/Unit-->
-                        <custom:TextBoxWithLabel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Address*" Text="{Binding OrganizationModelObj.Address1,UpdateSourceTrigger=PropertyChanged}"  />
+                        </Grid>
+                        <!--Address Block-->
+                        <Grid Grid.Row="1" Margin="0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <!--Row-1 Address***/APT/Unit-->
+                            <custom:TextBoxWithLabel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Address*" Text="{Binding OrganizationModelObj.Address1,UpdateSourceTrigger=PropertyChanged}"  />
 
-                        <custom:TextBoxWithLabel Grid.Column="2" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Apt/Unit*" Text="{Binding OrganizationModelObj.ApartmentNumber,UpdateSourceTrigger=PropertyChanged}" />
-                        <!--Row-2 City , ZIP , Phone-->
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="City*"  Text="{Binding OrganizationModelObj.City,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Column="2" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="15" TextBoxInfo="Apt/Unit*" Text="{Binding OrganizationModelObj.ApartmentNumber,UpdateSourceTrigger=PropertyChanged}" />
+                            <!--Row-2 City , ZIP , Phone-->
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="City*"  Text="{Binding OrganizationModelObj.City,UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Zip*" Text="{Binding OrganizationModelObj.Zip,UpdateSourceTrigger=PropertyChanged}" />
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="7" TextBoxInfo="Zip*" Text="{Binding OrganizationModelObj.Zip,UpdateSourceTrigger=PropertyChanged}" />
 
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="3"  Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Phone*" Text="{Binding OrganizationModelObj.Phone,UpdateSourceTrigger=PropertyChanged}"/>
-                        <!--Row-3 Email, Fax,, IsActive Checkbox-->
-                        <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Email*"  Text="{Binding OrganizationModelObj.Email,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="3"  Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="10" TextBoxInfo="Phone*" Text="{Binding OrganizationModelObj.Phone,UpdateSourceTrigger=PropertyChanged}"/>
+                            <!--Row-3 Email, Fax,, IsActive Checkbox-->
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Email*"  Text="{Binding OrganizationModelObj.Email,UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Fax*" Text="{Binding OrganizationModelObj.Fax,UpdateSourceTrigger=PropertyChanged}" />
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Fax*" Text="{Binding OrganizationModelObj.Fax,UpdateSourceTrigger=PropertyChanged}" />
 
-                        <StackPanel Grid.Row="4"  Grid.Column="3">
+                            <!--<StackPanel Grid.Row="4"  Grid.Column="3">
                             <TextBlock Text="Is Active" />
                             <CheckBox BorderBrush="#E0E0E0" BorderThickness="1" IsChecked="{Binding OrganizationModelObj.IsActive, UpdateSourceTrigger=PropertyChanged}"/>
-                        </StackPanel>
-                    </Grid>
-                    
-                    <!--Agency LOGO-->
-                    <Grid Grid.Row="2" Margin="0,20">
-                        <StackPanel >
-                            <TextBlock Text="AGENCY LOGO"  FontSize="16" FontWeight="SemiBold" Margin="0,0,0,10" />
-                            <StackPanel HorizontalAlignment="Left">
-                                <Ellipse Width="100" Height="100" Stroke="#E0E0E0" StrokeThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <Ellipse.Fill>
-                                        <VisualBrush Stretch="Uniform">
-                                            <VisualBrush.Visual>
-                                                <Grid>
-                                                    <Image Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                                </Grid>
-                                            </VisualBrush.Visual>
-                                        </VisualBrush>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                                <TextBlock Text="Logo Size (186 x 35) (jpg, jpeg, bmp, png)" TextAlignment="Center" Margin="0,10,0,0" Foreground="#808080"/>
+                        </StackPanel>-->
+                        </Grid>
+
+                        <!--Agency LOGO-->
+                        <Grid Grid.Row="2" Margin="0,20">
+                            <StackPanel >
+                                <TextBlock Text="AGENCY LOGO"  FontSize="16" FontWeight="SemiBold" Margin="0,0,0,10" />
+                                <StackPanel HorizontalAlignment="Left">
+                                    <Ellipse Width="100" Height="100" Stroke="#E0E0E0" StrokeThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <Ellipse.Fill>
+                                            <VisualBrush Stretch="Uniform">
+                                                <VisualBrush.Visual>
+                                                    <Grid>
+                                                        <Image Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                    </Grid>
+                                                </VisualBrush.Visual>
+                                            </VisualBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <TextBlock Text="Logo Size (186 x 35) (jpg, jpeg, bmp, png)" TextAlignment="Center" Margin="0,10,0,0" Foreground="#808080"/>
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                    </Grid>
-                    
-                    <!--Contact Person Info-->
-                    <Grid Grid.Row="3" Margin="0,20" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <!--Contact person Details Header:-->
-                        <TextBlock Text="CONTACT PERSON DETAILS"  FontSize="16" Margin="0,0,0,10"   FontWeight="SemiBold"/>
-                        <!--Contact person Name-->
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="First Name*"  Text="{Binding OrganizationModelObj.ContactPersonFirstName,UpdateSourceTrigger=PropertyChanged}"  />
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Middle Name*"  Text="{Binding OrganizationModelObj.ContactPersonMiddleName,UpdateSourceTrigger=PropertyChanged}"  />
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="3"   Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Last Name*"   Text="{Binding OrganizationModelObj.ContactPersonLastName,UpdateSourceTrigger=PropertyChanged}" />
-                        <!--Row-2 Contact person Phone-->
-                        <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Phone*"  Text="{Binding OrganizationModelObj.ContactPersonPhoneNumber,UpdateSourceTrigger=PropertyChanged}"  />
+                        </Grid>
+
+                        <!--Contact Person Info-->
+                        <Grid Grid.Row="3" Margin="0,20" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <!--Contact person Details Header:-->
+                            <TextBlock Text="CONTACT PERSON DETAILS"  FontSize="16" Margin="0,0,0,10"   FontWeight="SemiBold"/>
+                            <!--Contact person Name-->
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="First Name*"  Text="{Binding OrganizationModelObj.ContactPersonFirstName,UpdateSourceTrigger=PropertyChanged}"  />
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Middle Name*"  Text="{Binding OrganizationModelObj.ContactPersonMiddleName,UpdateSourceTrigger=PropertyChanged}"  />
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="3"   Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Last Name*"   Text="{Binding OrganizationModelObj.ContactPersonLastName,UpdateSourceTrigger=PropertyChanged}" />
+                            <!--Row-2 Contact person Phone-->
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Phone*"  Text="{Binding OrganizationModelObj.ContactPersonPhoneNumber,UpdateSourceTrigger=PropertyChanged}"  />
+
+                        </Grid>
+
+                        <!--Admin User Details-->
+                        <Grid Grid.Row="4"  Margin="0,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="ADMIN USER DETAILS"  FontSize="16" Margin="0,0,0,10" FontWeight="SemiBold"/>
+                            <!--Admin User and Password-->
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="User Name*"  Text="{Binding OrganizationModelObj.UserModelObj.UserName,UpdateSourceTrigger=PropertyChanged}"/>
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Password*"  IsPasswordEnabled="True"   Text="{Binding OrganizationModelObj.UserModelObj.Password,UpdateSourceTrigger=PropertyChanged}" />
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="3"   Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Confirm password*"  IsPasswordEnabled="True" Text="{Binding OrganizationModelObj.UserModelObj.ConfirmPasswordString,UpdateSourceTrigger=PropertyChanged}"  />
+
+                        </Grid>
+
+                        <!--SMTP Details-->
+                        <Grid Grid.Row="5"  Margin="0,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="SMTP DETAILS(FOR EMAILS)"  FontSize="16" Margin="0,0,0,10" FontWeight="SemiBold"/>
+                            <!--SMTP Connection Details @ Security -->
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Server Name*"  Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.ServerName,UpdateSourceTrigger=PropertyChanged}"   />
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Port*" Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.Port,UpdateSourceTrigger=PropertyChanged}"  />
+                            <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="3"   Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Connection Security*" Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.ConnectionSecurity,UpdateSourceTrigger=PropertyChanged}"/>
+
+
+                            <!--Admin User and Password-->
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="User Name*"  Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.SMTPUserName,UpdateSourceTrigger=PropertyChanged}"   />
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Password*"  IsPasswordEnabled="True" Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.SMTPPassword,UpdateSourceTrigger=PropertyChanged}"   />
+                            <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="3"  Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Confirm password*"  IsPasswordEnabled="True"  Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.SMTPConfirmPassword,UpdateSourceTrigger=PropertyChanged}"/>
+
+                        </Grid>
+
+                        <Button  Grid.Row="6" Content="SAVE" Style="{DynamicResource RoundedButtonStyle}" Width="90" HorizontalAlignment="Right" Height="30" Command="{Binding SaveAgencyCommmand}"/>
 
                     </Grid>
-
-                    <!--Admin User Details-->
-                    <Grid Grid.Row="4"  Margin="0,20">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Text="ADMIN USER DETAILS"  FontSize="16" Margin="0,0,0,10" FontWeight="SemiBold"/>
-                        <!--Admin User and Password-->
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="User Name*"  Text="{Binding OrganizationModelObj.UserModelObj.UserName,UpdateSourceTrigger=PropertyChanged}"/>
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Password*"  IsPasswordEnabled="True"   Text="{Binding OrganizationModelObj.UserModelObj.Password,UpdateSourceTrigger=PropertyChanged}" />
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="3"   Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Confirm password*"  IsPasswordEnabled="True" Text="{Binding OrganizationModelObj.UserModelObj.ConfirmPasswordString,UpdateSourceTrigger=PropertyChanged}"  />
-                      
-                    </Grid>
-
-                    <!--SMTP Details-->
-                    <Grid Grid.Row="5"  Margin="0,20">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Text="SMTP DETAILS(FOR EMAILS)"  FontSize="16" Margin="0,0,0,10" FontWeight="SemiBold"/>
-                        <!--SMTP Connection Details @ Security -->
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Server Name*"  Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.ServerName,UpdateSourceTrigger=PropertyChanged}"   />
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Port*" Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.Port,UpdateSourceTrigger=PropertyChanged}"  />
-                        <custom:TextBoxWithLabel Grid.Row="2" Grid.Column="3"   Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Connection Security*" Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.ConnectionSecurity,UpdateSourceTrigger=PropertyChanged}"/>
-
-
-                        <!--Admin User and Password-->
-                        <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="0"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="User Name*"  Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.SMTPUserName,UpdateSourceTrigger=PropertyChanged}"   />
-                        <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="1"  Margin="0,0,5,0" Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Password*"  IsPasswordEnabled="True" Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.SMTPPassword,UpdateSourceTrigger=PropertyChanged}"   />
-                        <custom:TextBoxWithLabel Grid.Row="4" Grid.Column="3"  Style="{StaticResource TextBoxWithLabel}" HorizontalAlignment="Left" MaxLength="50" TextBoxInfo="Confirm password*"  IsPasswordEnabled="True"  Text="{Binding OrganizationModelObj.OrganizationSMTPModelObj.SMTPConfirmPassword,UpdateSourceTrigger=PropertyChanged}"/>
-
-                    </Grid>
-
-                    <Button  Grid.Row="6" Content="SAVE" Style="{DynamicResource RoundedButtonStyle}" Width="90" HorizontalAlignment="Right" Height="30" Command="{Binding SaveAgencyCommmand}"/>
-
-                </Grid>
-            </Border>
-        </Grid>
+                </Border>
+            </Grid>
 
 
 
 
-    </ScrollViewer>
+        </ScrollViewer>
+        <!-- Loader Overlay -->
+        <themeCtrl:ProgressRing IsActive="{Binding IsLoaderActive,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                Foreground="{DynamicResource LoaderBrush}" Width="70" Height="70"/>
 
+    </Grid>
 </UserControl>

@@ -2,6 +2,7 @@
 using smartHealthApp.Common.AppMessenger;
 using smartHealthApp.Common.Enum;
 using smartHealthApp.UserControls;
+using smartHealthApp.UserControls.Dashboard;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,9 +44,10 @@ namespace smartHealthApp.Base
         public static MainWindow MainWindow { get; set; }
         public Login LoginUC { get; set; }
         public SetUpAgency SetUpAgencyUC { get; set; }
-        public Dashboard DashboardUC { get; set; }
+        public MainDashboardArea MainDashboardAreaUC { get; set; }
         public AddEditUser AddEditUserUC { get; set; }
         public ManageUsers ManageUsersUC  { get; set; }
+        public Dashboard DashboardUC { get; set; }
         #endregion
 
 
@@ -76,6 +78,13 @@ namespace smartHealthApp.Base
                     MainWindow.BlockMainScreenArea.Content = SetUpAgencyUC;
                     break;
 
+                case NavigationPages.MainDashboard:
+                    if (MainDashboardAreaUC == null)
+                    {
+                        MainDashboardAreaUC = new MainDashboardArea();
+                    }
+                    MainWindow.BlockMainScreenArea.Content = MainDashboardAreaUC;
+                    break;
                 case NavigationPages.Dashboard:
                     if (DashboardUC == null)
                     {
@@ -83,7 +92,7 @@ namespace smartHealthApp.Base
                     }
                     MainWindow.BlockMainScreenArea.Content = DashboardUC;
                     break;
-              
+
             }
         }
 
